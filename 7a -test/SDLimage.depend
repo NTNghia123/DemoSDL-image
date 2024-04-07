@@ -41,7 +41,7 @@
 	<SDL_image.h>
 	"defs.h"
 
-1712517099 source:d:\demosdl image\7a\main.cpp
+1712501367 source:d:\demosdl image\7a\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -51,10 +51,44 @@
 
 1710343907 d:\demosdl image\7a\defs.h
 
-1712517033 d:\demosdl image\7a\graphics.h
+1712507844 d:\demosdl image\7a\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
 
 1712501367 d:\demosdl image\7a\game.h
+
+1712515237 source:d:\demosdl image\7a - copy\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"graphics.h"
+	"defs.h"
+	"game.h"
+
+1712515237 d:\demosdl image\7a - copy\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1710343907 d:\demosdl image\7a - copy\defs.h
+
+1712501367 d:\demosdl image\7a - copy\game.h
+
+1712515433 source:d:\demosdl image\7a -test\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"graphics.h"
+	"defs.h"
+	"game.h"
+
+1712515409 d:\demosdl image\7a -test\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1710343907 d:\demosdl image\7a -test\defs.h
+
+1712501367 d:\demosdl image\7a -test\game.h
 

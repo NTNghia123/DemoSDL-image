@@ -8,6 +8,10 @@
 struct Graphics {
     SDL_Renderer *renderer;
 	SDL_Window *window;
+    SDL_Texture * img ;
+    SDL_Texture * bg ;
+    SDL_Rect src;
+
 
 	void logErrorAndExit(const char* msg, const char* error)
     {
@@ -36,6 +40,13 @@ struct Graphics {
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
         SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    img = loadTexture("tngan.jpg") ;
+    bg = loadTexture("mink.jpg");
+    src.x = 0;                // Tọa độ x của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trái)
+    src.y = 0;                // Tọa độ y của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trên)
+    SDL_QueryTexture(img, NULL, NULL, &src.w, &src.h); // Lấy kích thước của texture
+
     }
 
     void prepareScene()

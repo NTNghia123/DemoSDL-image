@@ -6,12 +6,8 @@
 #include "game.h"
 
 using namespace std;
-void check (Mouse& mouse) {
-    if ( mouse.x >= SCREEN_WIDTH ) mouse.x = 0;
-    if ( mouse.y >= SCREEN_HEIGHT) mouse.y = 0;
-    if ( mouse.x < 0 ) mouse.x = SCREEN_WIDTH;
-    if ( mouse.y < 0 ) mouse.y = SCREEN_HEIGHT;
-}
+
+
 int main(int argc, char *argv[])
 {
     Graphics graphics;
@@ -23,8 +19,8 @@ int main(int argc, char *argv[])
 
     bool quit = false;
     SDL_Event event;
-    while (!quit ) {
-        graphics.prepareScene();
+    while (!quit && !gameOver(mouse)) { //
+        graphics.prepareScene(graphics.bg);
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) quit = true;
@@ -37,9 +33,9 @@ int main(int argc, char *argv[])
         if (currentKeyStates[SDL_SCANCODE_LEFT]) mouse.turnWest();
         if (currentKeyStates[SDL_SCANCODE_RIGHT]) mouse.turnEast();
 
-        mouse.move();
+        mouse.move1();
 
-        render(mouse, graphics);
+        graphics.blitRect(graphics.img,&graphics.src,mouse.x,mouse.y);
 
         graphics.presentScene();
         SDL_Delay(10);
