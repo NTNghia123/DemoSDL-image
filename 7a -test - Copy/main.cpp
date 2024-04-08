@@ -6,12 +6,7 @@
 #include "game.h"
 
 using namespace std;
-void check (Mouse& mouse) {
-    if ( mouse.x >= SCREEN_WIDTH ) mouse.x = 0;
-    if ( mouse.y >= SCREEN_HEIGHT) mouse.y = 0;
-    if ( mouse.x < 0 ) mouse.x = SCREEN_WIDTH;
-    if ( mouse.y < 0 ) mouse.y = SCREEN_HEIGHT;
-}
+
 
 int main(int argc, char *argv[])
 {

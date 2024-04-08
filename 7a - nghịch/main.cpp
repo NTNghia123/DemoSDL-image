@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     bool quit = false;
     SDL_Event event;
-    while (!quit && !gameOver(mouse)) { //
+    while (!quit && !gameOver(mouse)) {
         graphics.prepareScene(graphics.bg);
 
         while (SDL_PollEvent(&event)) {

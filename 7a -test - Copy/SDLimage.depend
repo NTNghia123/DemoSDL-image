@@ -92,7 +92,7 @@
 
 1712501367 d:\demosdl image\7a -test\game.h
 
-1712515433 source:d:\demosdl image\7a -test - copy\main.cpp
+1712586064 source:d:\demosdl image\7a -test - copy\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -100,12 +100,12 @@
 	"defs.h"
 	"game.h"
 
-1712515409 d:\demosdl image\7a -test - copy\graphics.h
+1712586081 d:\demosdl image\7a -test - copy\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
 
 1710343907 d:\demosdl image\7a -test - copy\defs.h
 
-1712501367 d:\demosdl image\7a -test - copy\game.h
+1712586758 d:\demosdl image\7a -test - copy\game.h
 

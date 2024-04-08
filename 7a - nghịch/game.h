@@ -2,7 +2,7 @@
 #define GAME_H
 
 #define INITIAL_SPEED 3
-
+#include "graphics.h"
 struct Mouse {
     int x, y;
     int dx = 0, dy = 0;
