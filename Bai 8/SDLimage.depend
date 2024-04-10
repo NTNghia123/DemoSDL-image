@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1710344135 source:d:\demosdl image\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1710343907 d:\demosdl image\defs.h
+
+1710344070 d:\demosdl image\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1710344135 source:d:\demosdl image\b¿i 1\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1710343907 d:\demosdl image\b¿i 1\defs.h
+
+1710344070 d:\demosdl image\b¿i 1\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1712770128 source:d:\demosdl image\bai 8\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"graphics.h"
+
+1712769955 d:\demosdl image\bai 8\defs.h
+
+1712770028 d:\demosdl image\bai 8\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+

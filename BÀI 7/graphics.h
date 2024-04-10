@@ -4,14 +4,27 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "defs.h"
+#include <vector>
+
+struct ScrollingBackground {
+    SDL_Texture* texture;
+    int scrollingOffset = 0;
+    int width, height;
+
+    void setTexture(SDL_Texture* _texture) {
+        texture = _texture;
+        SDL_QueryTexture(texture, NULL, NULL, &width, &height);
+    }
+
+    void scroll(int distance) {
+        scrollingOffset -= distance;
+        if( scrollingOffset < 0 ) { scrollingOffset = width; }
+    }
+};
 
 struct Graphics {
     SDL_Renderer *renderer;
 	SDL_Window *window;
-    SDL_Texture * img ;
-    SDL_Texture * bg ;
-    SDL_Rect src;
-
 
 	void logErrorAndExit(const char* msg, const char* error)
     {
@@ -40,25 +53,12 @@ struct Graphics {
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
         SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    img = loadTexture("tngan.jpg") ;
-    bg = loadTexture("mink.jpg");
-    src.x = 0;                // Tọa độ x của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trái)
-    src.y = 0;                // Tọa độ y của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trên)
-    SDL_QueryTexture(img, NULL, NULL, &src.w, &src.h); // Lấy kích thước của texture
-
     }
 
-    void prepareScene()
-    {   // xoa man hinh bang mau den
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	void prepareScene(SDL_Texture * background = nullptr)
+    {
         SDL_RenderClear(renderer);
-    }
-
-	void prepareScene(SDL_Texture * background)
-    {   // xoa renderer va chep bg len man hinh
-        SDL_RenderClear(renderer);
-        SDL_RenderCopy( renderer, background, NULL, NULL);
+        if (background != nullptr) SDL_RenderCopy( renderer, background, NULL, NULL);
     }
 
     void presentScene()
@@ -107,6 +107,11 @@ struct Graphics {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
+    }
+
+    void render(const ScrollingBackground& background) {
+        renderTexture(background.texture, background.scrollingOffset, 0);
+        renderTexture(background.texture, background.scrollingOffset - background.width, 0);
     }
 };
 
