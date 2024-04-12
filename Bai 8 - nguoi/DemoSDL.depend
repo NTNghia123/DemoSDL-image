@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1708612694 source:d:\demosdl\main.cpp
+	<iostream>
+	<SDL.h>
+
+1708612778 source:d:\demosdl\fimage.cpp
+	<iostream>
+	<SDL.h>
+
+1708612694 source:d:\demosdl - copy\main.cpp
+	<iostream>
+	<SDL.h>
+
+1708612832 source:d:\demosdl image\untitled2.c
+
+1708613313 source:d:\demosdl image\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
