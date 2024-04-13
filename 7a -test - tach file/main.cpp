@@ -2,8 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "graphics.h"
-#include "defs.h"
-#include "game.h"
+#include "game.cpp"
 
 using namespace std;
 

@@ -43,7 +43,7 @@
 	<vector>
 	"defs.h"
 
-1712770521 source:d:\demosdl image\bai 8 - nguoi\main.cpp
+1712770700 source:d:\demosdl image\bai 8 - chim\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -51,11 +51,36 @@
 	"defs.h"
 	"graphics.h"
 
-1712769955 d:\demosdl image\bai 8 - nguoi\defs.h
+1712770725 d:\demosdl image\bai 8 - chim\defs.h
 
-1712770344 d:\demosdl image\bai 8 - nguoi\graphics.h
+1712770344 d:\demosdl image\bai 8 - chim\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<vector>
+	"defs.h"
+
+1712989548 source:d:\demosdl image\bai 8 - chim - move\main.cpp
+	"defs.h"
+	"graphics.h"
+	"chim.h"
+
+1712983890 d:\demosdl image\bai 8 - chim - move\defs.h
+
+1712983890 d:\demosdl image\bai 8 - chim - move\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"chim.h"
+
+1712983890 d:\demosdl image\bai 8 - chim - move\chim.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+
+1712984602 source:d:\demosdl image\bai 8 - chim - move\chim.cpp
+	"chim.h"
 	"defs.h"
 

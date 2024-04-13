@@ -1,11 +1,9 @@
-#include <iostream>
-#include <SDL.h>
-#include <SDL_image.h>
 #include "graphics.h"
-#include "defs.h"
 #include "game.h"
+#include "defs.h"
 
 using namespace std;
+const char*  BIRD_SPRITE_FILE = "img\\sprite.png";
 
 
 int main(int argc, char *argv[])
@@ -28,7 +26,7 @@ int main(int argc, char *argv[])
 
 
         mouse.updateKeyboard(); // lay dx dy
-        mouse.move(); // cap nhat x y
+        mouse.movee(); // cap nhat x y
         mouse.check();
 
         graphics.blitRect(graphics.img,&graphics.src,mouse.x,mouse.y);
