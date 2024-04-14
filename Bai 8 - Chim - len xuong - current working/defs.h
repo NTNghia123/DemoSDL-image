@@ -9,8 +9,9 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
 const int INIT_X = 100;
-const int INIT_Y = 100;
+const int INIT_Y = 200;
 const int BG_SCROLL_SPEED = 1;
+
 
 const int BIRD_CLIPS[][4] = {
     {0, 0, 182, 168},

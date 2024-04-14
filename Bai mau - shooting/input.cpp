@@ -1,3 +1,4 @@
+
 #ifndef _GRAPHICS__H
 #define _GRAPHICS__H
 
@@ -8,10 +9,6 @@
 struct Graphics {
     SDL_Renderer *renderer;
 	SDL_Window *window;
-    SDL_Texture * img ;
-    SDL_Texture * bg ;
-    SDL_Rect src;
-
 
 	void logErrorAndExit(const char* msg, const char* error)
     {
@@ -40,28 +37,15 @@ struct Graphics {
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
         SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    img = loadTexture("tngan.jpg") ;
-    bg = loadTexture("mink.jpg");
-    src.x = 0;                // Tọa độ x của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trái)
-    src.y = 0;                // Tọa độ y của góc trái trên của phần muốn vẽ từ texture (ở đây là góc trên)
-    SDL_QueryTexture(img, NULL, NULL, &src.w, &src.h); // Lấy kích thước của texture
-
     }
 
-    void prepareScene()
-    {   // xoa man hinh bang mau den
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	void prepareScene(void)
+    {
+        SDL_SetRenderDrawColor(renderer, BG_COLOR_R, BG_COLOR_G, BG_COLOR_B, BG_COLOR_A);
         SDL_RenderClear(renderer);
     }
 
-	void prepareScene(SDL_Texture * background)
-    {   // xoa renderer va chep bg len man hinh
-        SDL_RenderClear(renderer);
-        SDL_RenderCopy( renderer, background, NULL, NULL);
-    }
-
-    void presentScene()
+    void presentScene(void)
     {
         SDL_RenderPresent(renderer);
     }

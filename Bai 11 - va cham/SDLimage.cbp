@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="minkngan" />
+		<Option title="SDLimage" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,11 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="cheese.h" />
 		<Unit filename="defs.h" />
-		<Unit filename="game.cpp" />
-		<Unit filename="game.h" />
 		<Unit filename="graphics.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mouse.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

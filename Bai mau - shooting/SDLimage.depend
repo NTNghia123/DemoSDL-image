@@ -89,3 +89,49 @@
 1713002480 d:\demosdl image\bai 8 - chim - move\background.h
 	"defs.h"
 
+1713069623 source:d:\demosdl image\bai mau - shooting\input.cpp
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1713069623 d:\demosdl image\bai mau - shooting\defs.h
+
+1713069623 source:d:\demosdl image\bai mau - shooting\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"input.h"
+	"graphics.h"
+	"logic.h"
+	<ctime>
+
+1713069920 d:\demosdl image\bai mau - shooting\input.h
+	<SDL.h>
+	"defs.h"
+	"structs.h"
+
+1713069623 d:\demosdl image\bai mau - shooting\structs.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1713069623 d:\demosdl image\bai mau - shooting\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1713069623 d:\demosdl image\bai mau - shooting\logic.h
+	<iostream>
+	<list>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+	"structs.h"
+
+1713070017 source:d:\demosdl image\bai mau - shooting\sync.cpp
+	<iostream>
+	<SDL.h>
+	"graphics.h"
+

@@ -89,3 +89,37 @@
 1713002480 d:\demosdl image\bai 8 - chim - move\background.h
 	"defs.h"
 
+1713029186 source:d:\demosdl image\bai 8 - chim - len xuong\main.cpp
+	"defs.h"
+	"graphics.h"
+	"chim.h"
+	"background.h"
+
+1713029263 d:\demosdl image\bai 8 - chim - len xuong\defs.h
+
+1713027932 d:\demosdl image\bai 8 - chim - len xuong\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"chim.h"
+	"background.h"
+
+1713029230 d:\demosdl image\bai 8 - chim - len xuong\chim.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+
+1713002480 d:\demosdl image\bai 8 - chim - len xuong\background.h
+	"defs.h"
+
+1713027990 source:d:\demosdl image\bai 8 - chim - len xuong\chim.cpp
+	"chim.h"
+	"defs.h"
+
+1713021943 d:\demosdl image\bai 8 - chim - len xuong\chim.cpp
+	"chim.h"
+	"defs.h"
+
