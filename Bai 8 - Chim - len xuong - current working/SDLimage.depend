@@ -123,3 +123,33 @@
 	"chim.h"
 	"defs.h"
 
+1713027990 source:d:\demosdl image\bai 8 - chim - len xuong - current working\chim.cpp
+	"chim.h"
+	"defs.h"
+
+1713029230 d:\demosdl image\bai 8 - chim - len xuong - current working\chim.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+
+1713029263 d:\demosdl image\bai 8 - chim - len xuong - current working\defs.h
+
+1713029186 source:d:\demosdl image\bai 8 - chim - len xuong - current working\main.cpp
+	"defs.h"
+	"graphics.h"
+	"chim.h"
+	"background.h"
+
+1713027932 d:\demosdl image\bai 8 - chim - len xuong - current working\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"chim.h"
+	"background.h"
+
+1713002480 d:\demosdl image\bai 8 - chim - len xuong - current working\background.h
+	"defs.h"
+
