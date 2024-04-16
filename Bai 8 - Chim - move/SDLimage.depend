@@ -59,15 +59,15 @@
 	<vector>
 	"defs.h"
 
-1713293304 source:d:\demosdl image\bai 8 - chim - move\main.cpp
+1713294835 source:d:\demosdl image\bai 8 - chim - move\main.cpp
 	"defs.h"
 	"graphics.h"
 	"chim.h"
 	"background.h"
 
-1713293153 d:\demosdl image\bai 8 - chim - move\defs.h
+1713294835 d:\demosdl image\bai 8 - chim - move\defs.h
 
-1713005390 d:\demosdl image\bai 8 - chim - move\graphics.h
+1713294960 d:\demosdl image\bai 8 - chim - move\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<vector>

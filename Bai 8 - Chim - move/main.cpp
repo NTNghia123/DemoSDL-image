@@ -19,10 +19,6 @@ int main(int argc, char *argv[])
     SDL_Texture* explodeTexture = graphics.loadTexture(TOWER_EXPLODE_FILE);
     explode.init(explodeTexture, TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
 
-//    Sprite health;
-//    SDL_Texture* explodeTexture = graphics.loadTexture(HEALTH_BAR);
-//    explode.init(explodeTexture, TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
-
     Sprite healthBar;
     SDL_Texture* health_bar = graphics.loadTexture(HEALTH_BAR);
     healthBar.init(health_bar, HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
@@ -34,8 +30,8 @@ int main(int argc, char *argv[])
     Input input;
     input.init();
 
-//    ScrollingBackground bg;
-//    bg.setTexture(graphics.loadTexture(BG_IMAGE));
+    ScrollingBackground bg;
+    bg.setTexture(graphics.loadTexture(BG_IMAGE));
 
     SDL_Texture* staticBG = graphics.loadTexture(STATIC_BG_IMAGE);
 
@@ -53,11 +49,11 @@ int main(int argc, char *argv[])
         toado.updateToado(input.keyboard);
         toado.movee();
 
-        //bg.scroll(BG_SCROLL_SPEED);
-        //graphics.render(bg);
+        bg.scroll(BG_SCROLL_SPEED);
+        graphics.render(bg);
         graphics.renderTexture(staticBG,0,200);
         graphics.renderTexture(test,150,200);
-        graphics.render(0,0,healthBar);
+        graphics.render(-13,0,healthBar);
         //graphics.render(toado.x,toado.y,bird);
         graphics.render(-185,0,explode);
         graphics.presentScene();

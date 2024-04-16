@@ -1,8 +1,8 @@
 #ifndef _DEFS__H
 #define _DEFS__H
 
-// #define BG_IMAGE "img\\grass_field_resize.jpg" // cho scroll
-#define STATIC_BG_IMAGE "img\\grass_field_resize.jpg"
+#define BG_IMAGE "img\\sky_crop.jpg" // cho scroll
+#define STATIC_BG_IMAGE "img\\grass_field_resize_afterAse.jpg"
 #define WINDOW_TITLE "Hello World!"
 #define BIRD_SPRITE_FILE "img\\sprite.png"
 #define TOWER_EXPLODE_FILE "img\\tower_exploding_new.png"
