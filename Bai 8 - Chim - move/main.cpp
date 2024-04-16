@@ -15,29 +15,53 @@ int main(int argc, char *argv[])
     SDL_Texture* birdTexture = graphics.loadTexture(BIRD_SPRITE_FILE);
     bird.init(birdTexture, BIRD_FRAMES, BIRD_CLIPS);
 
+    Sprite explode;
+    SDL_Texture* explodeTexture = graphics.loadTexture(TOWER_EXPLODE_FILE);
+    explode.init(explodeTexture, TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
+
+//    Sprite health;
+//    SDL_Texture* explodeTexture = graphics.loadTexture(HEALTH_BAR);
+//    explode.init(explodeTexture, TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
+
+    Sprite healthBar;
+    SDL_Texture* health_bar = graphics.loadTexture(HEALTH_BAR);
+    healthBar.init(health_bar, HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
+
+    SDL_Texture* test = graphics.loadTexture(TEST);
+
     ToaDo toado;
 
-    ScrollingBackground bg;
-    bg.setTexture(graphics.loadTexture(BG_IMAGE));
+    Input input;
+    input.init();
+
+//    ScrollingBackground bg;
+//    bg.setTexture(graphics.loadTexture(BG_IMAGE));
+
+    SDL_Texture* staticBG = graphics.loadTexture(STATIC_BG_IMAGE);
 
     bool quit = false;
     SDL_Event e;
     while( !quit ) {
-        while( SDL_PollEvent( &e ) != 0 ) {
-            if( e.type == SDL_QUIT ) quit = true;
-        }
-        bird.tick(); // cap nhat frame
+
+        //bird.tick(); // cap nhat frame
+        //explode.tick();
+        healthBar.tick();
         graphics.prepareScene();
         //cap nhat toa do
 
-        toado.updateKeyboard();
+        input.get();
+        toado.updateToado(input.keyboard);
         toado.movee();
 
-        bg.scroll(BG_SCROLL_SPEED);
-        graphics.render(bg);
-        graphics.render(toado.x,toado.y,bird);
+        //bg.scroll(BG_SCROLL_SPEED);
+        //graphics.render(bg);
+        graphics.renderTexture(staticBG,0,200);
+        graphics.renderTexture(test,150,200);
+        graphics.render(0,0,healthBar);
+        //graphics.render(toado.x,toado.y,bird);
+        graphics.render(-185,0,explode);
         graphics.presentScene();
-        SDL_Delay(10);
+        SDL_Delay(100);
     }
 
     SDL_DestroyTexture( birdTexture );

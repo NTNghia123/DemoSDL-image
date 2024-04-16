@@ -8,8 +8,9 @@
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
+const int MAX_KEYBOARD_KEYS = 350;
 const int INIT_X = 100;
-const int INIT_Y = 200;
+const int INIT_Y = 100;
 const int BG_SCROLL_SPEED = 1;
 
 

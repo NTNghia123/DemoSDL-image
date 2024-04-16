@@ -16,10 +16,22 @@
         currentFrame = (currentFrame + 1) % clips.size();
     }
 
-    const SDL_Rect* Sprite::getCurrentClip() const {
+   const SDL_Rect* Sprite::getCurrentClip() const {
         return &(clips[currentFrame]);
     }
-
+void ToaDo::updateToado(int keyboard[])
+    {
+//        if (player.health == 0) return;
+//
+          dx = dy = 0;
+//
+//        if (player.reload > 0) player.reload--;
+        if (keyboard[SDL_SCANCODE_UP]) turnUp();
+        if (keyboard[SDL_SCANCODE_DOWN]) turnDown();
+        if (keyboard[SDL_SCANCODE_LEFT]) turnLeft();
+        if (keyboard[SDL_SCANCODE_RIGHT]) turnRight();
+     // if (keyboard[SDL_SCANCODE_LCTRL] && player.reload == 0) fireBullet();
+    }
 
     void ToaDo::movee(){
         x += dx;
@@ -49,12 +61,9 @@
         std::cerr << "down" << std::endl;
 
     }
-
-    void ToaDo::updateKeyboard(){
-        const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-
-        if (currentKeyStates[SDL_SCANCODE_UP]) turnUp();
-        if (currentKeyStates[SDL_SCANCODE_DOWN]) turnDown();
-        if (currentKeyStates[SDL_SCANCODE_LEFT]) turnLeft();
-        if (currentKeyStates[SDL_SCANCODE_RIGHT]) turnRight();
+    void ToaDo::ResetSpeed(){
+    dx = 0;
+    dy = 0;
+    std::cerr << "reset" << std::endl;
     }
+
