@@ -1,27 +1,66 @@
 #ifndef _DEFS__H
 #define _DEFS__H
 
+#define BG_IMAGE "img\\sky_crop.jpg" // cho scroll
+#define STATIC_BG_IMAGE "img\\grass_field_resize_afterAse.jpg"
 #define WINDOW_TITLE "Hello World!"
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define BIRD_SPRITE_FILE "img\\sprite.png"
+#define TOWER_EXPLODE_FILE "img\\tower_exploding_new.png"
+//#define TEST "img\\adventurer-bow-Sheet.png"
+#define PLAYER_IMG "img\\normal.png"
+#define HEALTH_BAR "img\\health_bar.png"
 
-#define PLAYER_SPEED          4
-#define PLAYER_BULLET_SPEED   16
-#define PLAYER_RELOAD          8
-#define MAX_KEYBOARD_KEYS 350
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 500;
 
-#define SIDE_PLAYER 0
-#define SIDE_ALIEN  1
+const int MAX_KEYBOARD_KEYS = 350;
+const int INIT_X = 100;
+const int INIT_Y = 100;
+const int BG_SCROLL_SPEED = 1;
 
-#define FRAME_PER_SECOND 60
 
-#define ENEMY_BULLET_SPEED    8
+const int BIRD_CLIPS[][4] = {
+    {0, 0, 182, 168},
+    {181, 0, 182, 168},
+    {364, 0, 182, 168},
+    {547, 0, 182, 168},
+    {728, 0, 182, 168},
 
-#define MAX_STARS   500
+    {0, 170, 182, 168},
+    {181, 170, 182, 168},
+    {364, 170, 182, 168},
+    {547, 170, 182, 168},
+    {728, 170, 182, 168},
 
-#define BG_COLOR_R 96
-#define BG_COLOR_G 128
-#define BG_COLOR_B 255
-#define BG_COLOR_A 255
+    {0, 340, 182, 168},
+    {181, 340, 182, 168},
+    {364, 340, 182, 168},
+    {547, 340, 182, 168},
+};
+const int BIRD_FRAMES = sizeof(BIRD_CLIPS)/sizeof(int)/4;
+
+const int TOWER_EXPLODE_CLIPS[][4] ={
+    {1476,663,492,663},
+    {0,0,492,663},
+    {492,0,492,663},
+    {984,0,492,663},
+    {1476,0,492,663},
+    {0,663,492,663},
+    {492,663,492,663},
+    {984,663,492,663},
+    {1476,663,492,663}
+};
+const int TOWER_EXPLODE_FRAMES = 8;
+
+const int HEALTH_BAR_CLIPS[][4] = {
+    {0,0,224,83},
+    {0,83,224,83},
+    {0,166,224,83},
+    {0,250,224,83},
+    {0,333,224,83},
+    {0,416,224,83}
+};
+const int HEALTH_BAR_FRAMES = 6;
 
 #endif
+

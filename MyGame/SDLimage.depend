@@ -59,15 +59,15 @@
 	<vector>
 	"defs.h"
 
-1713002726 source:d:\demosdl image\bai 8 - chim - move\main.cpp
+1713295224 source:d:\demosdl image\bai 8 - chim - move\main.cpp
 	"defs.h"
 	"graphics.h"
 	"chim.h"
 	"background.h"
 
-1713005456 d:\demosdl image\bai 8 - chim - move\defs.h
+1713294835 d:\demosdl image\bai 8 - chim - move\defs.h
 
-1713005390 d:\demosdl image\bai 8 - chim - move\graphics.h
+1713294960 d:\demosdl image\bai 8 - chim - move\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<vector>
@@ -75,74 +75,48 @@
 	"chim.h"
 	"background.h"
 
-1712983890 d:\demosdl image\bai 8 - chim - move\chim.h
+1713279811 d:\demosdl image\bai 8 - chim - move\chim.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<vector>
 	"defs.h"
 
-1712984602 source:d:\demosdl image\bai 8 - chim - move\chim.cpp
+1713283627 source:d:\demosdl image\bai 8 - chim - move\chim.cpp
 	"chim.h"
 	"defs.h"
 
 1713002480 d:\demosdl image\bai 8 - chim - move\background.h
 	"defs.h"
 
-1713106660 source:d:\demosdl image\bai mau - shooting\input.cpp
-	<SDL.h>
-	<SDL_image.h>
-	"defs.h"
-
-1713069623 d:\demosdl image\bai mau - shooting\defs.h
-
-1713069623 source:d:\demosdl image\bai mau - shooting\main.cpp
-	<iostream>
-	<SDL.h>
-	<SDL_image.h>
-	"defs.h"
-	"input.h"
-	"graphics.h"
-	"logic.h"
-	<ctime>
-
-1713069920 d:\demosdl image\bai mau - shooting\input.h
-	<SDL.h>
-	"defs.h"
-	"structs.h"
-
-1713069623 d:\demosdl image\bai mau - shooting\structs.h
-	<SDL.h>
-	<SDL_image.h>
-	"defs.h"
-
-1713101596 d:\demosdl image\bai mau - shooting\graphics.h
-	<SDL.h>
-	<SDL_image.h>
-	"defs.h"
-
-1713069623 d:\demosdl image\bai mau - shooting\logic.h
-	<iostream>
-	<list>
-	<SDL.h>
-	<SDL_image.h>
-	"defs.h"
-	"graphics.h"
-	"structs.h"
-
-1713070017 source:d:\demosdl image\bai mau - shooting\sync.cpp
-	<iostream>
-	<SDL.h>
-	"graphics.h"
-
-1712984602 source:d:\demosdl image\bai mau - shooting\chim.cpp
+1713370917 source:d:\demosdl image\mygame\chim.cpp
 	"chim.h"
 	"defs.h"
 
-1712983890 d:\demosdl image\bai mau - shooting\chim.h
+1713371685 d:\demosdl image\mygame\chim.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<vector>
+	"defs.h"
+	"graphics.h"
+
+1713371503 d:\demosdl image\mygame\defs.h
+
+1713295224 source:d:\demosdl image\mygame\main.cpp
+	"defs.h"
+	"graphics.h"
+	"chim.h"
+	"background.h"
+
+1713294960 d:\demosdl image\mygame\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"chim.h"
+	"background.h"
+
+1713002480 d:\demosdl image\mygame\background.h
 	"defs.h"
 
