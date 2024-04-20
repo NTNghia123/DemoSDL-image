@@ -9,7 +9,7 @@
 #define PLAYER_NORMAL_IMG "img\\normal.png"
 #define PLAYER_JUMPING_IMG "img\\jumpp.png"
 #define PLAYER_SHOOTING_IMG "img\\shoot1.png"
-
+#define ARROW_IMG "img\\arrow.png"
 #define HEALTH_BAR "img\\health_bar.png"
 
 const int SCREEN_WIDTH = 800;

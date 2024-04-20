@@ -51,6 +51,9 @@ void Player::updateToadoPlayer(int keyboard[])
     }
 
 void Player::PlayerInit (){
+    x = INIT_X;
+    y = INIT_Y;
+    health = 5;
     PlayerTexture.push_back(NormalTexture);
     PlayerTexture.push_back(JumpingTexture);
     PlayerTexture.push_back(ShootingTexture);

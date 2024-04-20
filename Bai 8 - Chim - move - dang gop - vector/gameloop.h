@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <list>
 #include "defs.h"
 #include "sprite_player.h"
 #include "background.h"
@@ -10,9 +12,14 @@ private:
 	SDL_Renderer* renderer;
 	Sprite explode;
     Sprite healthBar;
+    std::list<Sprite*> arrows;
     Player player;
+
+    SDL_Texture* arrowTexture;
+
     ScrollingBackground bg;
     SDL_Texture* staticBG;
+
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
     // ~Game();
 
@@ -20,5 +27,6 @@ public:
 	void initGame();
 	void play();
     void get();
+    void shootArrow();
+    void doArrows();
 };
-

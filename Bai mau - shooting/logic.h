@@ -158,7 +158,7 @@ struct Game {
         return false;
     }
 
-    void doBullets(void)
+    void doBullets()
     {
         auto it = bullets.begin();
         while (it != bullets.end()) {

@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
-
+#include <list>
 #include "defs.h"
 #include "sprite_player.h"
 #include "background.h"

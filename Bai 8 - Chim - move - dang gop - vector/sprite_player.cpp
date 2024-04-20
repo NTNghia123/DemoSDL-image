@@ -44,18 +44,17 @@ void Sprite::updateToado(int keyboard[])
 //        std::cerr << "left" << std::endl;
 //
 //    }
-//    void Sprite::turnRight(){
-//        dx =  speed;
-//        dy = 0 ;
-//        std::cerr << "right" << std::endl;
-//
-//    }
+    void Sprite::turnRight(){
+        dx =  speed;
+        dy = 0 ;
+        //std::cerr << "right" << std::endl;
+   }
     void Sprite::turnUp(){
         if ( y - speed >= 170 && y - speed <= 470){
         dx = 0;
         dy = - speed ;
         }
-        tick();
+        //tick();
         std::cerr << "up" << std::endl;
     }
     void Sprite::turnDown(){
@@ -63,7 +62,7 @@ void Sprite::updateToado(int keyboard[])
         dx = 0;
         dy = speed ;
         }
-        tick();
+        //tick();
         std::cerr << "down" << std::endl;
     }
     void Sprite::render(int x, int y, SDL_Renderer *renderer) {

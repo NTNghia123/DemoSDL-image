@@ -18,6 +18,8 @@ void Game::initGame() {
     player.JumpingTexture = loadTexture(PLAYER_JUMPING_IMG, renderer);
     player.ShootingTexture = loadTexture(PLAYER_SHOOTING_IMG, renderer);
     player.PlayerInit();
+
+    arrowTexture = loadTexture(ARROW_IMG,renderer);
 }
 void Game::play(){
     bool quit = false;
@@ -41,6 +43,9 @@ void Game::play(){
         healthBar.render(-13,0,renderer);
         //graphics.render(toado.x,toado.y,bird);
         explode.render(-195,0,renderer);
+        for (Sprite* a: arrows)
+        renderTexture(a->texture, a->x, a->y,renderer);
+
         presentScene(renderer);
         SDL_Delay(100);
     }
@@ -81,3 +86,33 @@ void Game::get() {
         //std::cerr << "worked" << std::endl;
         }
     }
+    void Game::shootArrow()
+    {
+        Sprite *arrow = new Sprite();
+        arrows.push_back(arrow);
+
+        arrow->x = player.x;
+        arrow->y = player.y;
+        arrow->y += (player.h / 2) - (arrow->h / 2);
+        arrow->dx = ARROW_SPEED;
+        arrow->health = 1;
+        arrow->texture = arrowTexture;
+        SDL_QueryTexture(arrowTexture, NULL, NULL, &arrow->w, &arrow->h);
+
+        //player.reload = PLAYER_RELOAD;
+    }
+    void Game::doArrows()
+    {
+        auto it = arrows.begin();
+        while (it != arrows.end()) {
+            auto temp = it++;
+            Sprite* b = *temp;
+            b->turnRight();
+            b->movee();
+//            if (bulletHitFighter(b) || b->offScreen()) {
+//                delete b;
+//                bullets.erase(temp);
+//            }
+        }
+    }
+

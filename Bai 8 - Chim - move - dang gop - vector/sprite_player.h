@@ -8,6 +8,7 @@
 #include "graphics.h"
 
 #define INITIAL_SPEED 65
+#define ARROW_SPEED 10
 class Sprite {
     private:
 
@@ -16,9 +17,12 @@ class Sprite {
     SDL_Texture* texture;
     std::vector <SDL_Rect> clips;
     int currentFrame = 0;
+    int health;
 
-    int x = INIT_X;
-    int y = INIT_Y;
+    int x;
+    int y;
+    int w;
+    int h;
     int dx = 0;
     int dy = 0;
     int speed = INITIAL_SPEED;
