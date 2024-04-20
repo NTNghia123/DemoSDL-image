@@ -214,9 +214,9 @@
 	"sprite_player.h"
 	"background.h"
 
-1713552820 d:\demosdl image\bai 8 - chim - move - dang gop - vector\defs.h
+1713585225 d:\demosdl image\bai 8 - chim - move - dang gop - vector\defs.h
 
-1713555340 d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.h
+1713584140 d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -235,7 +235,7 @@
 1713002480 d:\demosdl image\bai 8 - chim - move - dang gop - vector\background.h
 	"defs.h"
 
-1713555421 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\main.cpp
+1713582180 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\main.cpp
 	"defs.h"
 	"sprite_player.h"
 	"background.h"
@@ -246,14 +246,14 @@
 	"sprite_player.h"
 	"background.h"
 
-1713555412 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.cpp
+1713585827 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 
-1713551374 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.cpp
+1713586176 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.cpp
 	"sprite_player.h"
 	"defs.h"
 
-1713556359 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\player.cpp
+1713586139 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\player.cpp
 	"sprite_player.h"
 

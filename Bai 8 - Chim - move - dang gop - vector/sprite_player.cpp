@@ -18,6 +18,7 @@ void Sprite::initClip(SDL_Texture* _texture, int frames, const int _clips[][4]) 
 }
     void Sprite::tick() {
         currentFrame = (currentFrame + 1) % clips.size();
+        //std::cerr << "tick " << std::endl;
     }
 
    const SDL_Rect* Sprite::getCurrentClip() const {
@@ -25,16 +26,12 @@ void Sprite::initClip(SDL_Texture* _texture, int frames, const int _clips[][4]) 
     }
 void Sprite::updateToado(int keyboard[])
     {
-//        if (player.health == 0) return;
-//
-          dx = dy = 0;
-//
-//        if (player.reload > 0) player.reload--;
+        dx = dy = 0;
+
         if (keyboard[SDL_SCANCODE_UP]) turnUp();
         if (keyboard[SDL_SCANCODE_DOWN]) turnDown();
         //if (keyboard[SDL_SCANCODE_LEFT]) turnLeft();
         //if (keyboard[SDL_SCANCODE_RIGHT]) turnRight();
-     // if (keyboard[SDL_SCANCODE_LCTRL] && player.reload == 0) fireBullet();
     }
 
     void Sprite::movee(){
@@ -68,7 +65,6 @@ void Sprite::updateToado(int keyboard[])
         }
         tick();
         std::cerr << "down" << std::endl;
-
     }
     void Sprite::render(int x, int y, SDL_Renderer *renderer) {
         const SDL_Rect* clip = getCurrentClip();

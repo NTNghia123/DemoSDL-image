@@ -23,9 +23,7 @@ void Game::play(){
     bool quit = false;
     while( !quit ) {
 
-        //bird.tick(); // cap nhat frame
         //explode.tick();
-        //player.tick();
         //healthBar.tick();
         prepareScene(renderer);
         //cap nhat toa do
@@ -38,7 +36,6 @@ void Game::play(){
         render(bg,renderer);
         renderTexture(staticBG,0,200,renderer);
 
-        if ( player.Jumping == true ) player.texture = player.JumpingTexture;
         player.render(renderer);
 
         healthBar.render(-13,0,renderer);
@@ -78,9 +75,9 @@ void Game::get() {
                     break;
             }
         }
-        //if (!isPressed) player.currentTexture = 0;
         if (!anyEventProcessed)  {
         player.currentTexture = 0;
+        //if (player.isStanding && !player.Shooting && !player.Jumping) player.tick();
         //std::cerr << "worked" << std::endl;
         }
     }

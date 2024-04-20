@@ -41,6 +41,7 @@ class Player : public Sprite{
     public :
     bool Jumping = false;
     bool Shooting = false;
+    bool isStanding = true;
     SDL_Texture* NormalTexture;
     SDL_Texture* JumpingTexture;
     SDL_Texture* ShootingTexture;
@@ -52,8 +53,8 @@ class Player : public Sprite{
     void render(SDL_Renderer *renderer);
     void turnUpp();
     void turnDownn();
+    void shootArrow();
     void moveee();
-    // void PlayerSetTexture(SDL_Texture* _texture);
 };
 
 

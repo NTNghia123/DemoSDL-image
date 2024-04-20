@@ -6,9 +6,9 @@
 #define WINDOW_TITLE "Hello World!"
 #define TOWER_EXPLODE_FILE "img\\tower_exploding_new.png"
 //#define TEST "img\\adventurer-bow-Sheet.png"
-#define PLAYER_NORMAL_IMG "img\\Sprite_player.png"
+#define PLAYER_NORMAL_IMG "img\\normal.png"
 #define PLAYER_JUMPING_IMG "img\\jumpp.png"
-#define PLAYER_SHOOTING_IMG "img\\shoot.png"
+#define PLAYER_SHOOTING_IMG "img\\shoot1.png"
 
 #define HEALTH_BAR "img\\health_bar.png"
 
@@ -65,17 +65,16 @@ const int HEALTH_BAR_CLIPS[][4] = {
 const int HEALTH_BAR_FRAMES = 6;
 
 const int PLAYER_CLIPS[][4] = {
-    {0,0,136,156},
-    {136,0,136,156},
-    {272,0,136,156}
+    {0,0,119,119},
+    {119,0,119,119}
 };
-const int PLAYER_FRAMES = 3;
+const int PLAYER_FRAMES = 2;
 
-const int PLAYER_JUMPING_CLIPS[][4] = {
-    {0,0,136,156}
-};
+//const int PLAYER_JUMPING_CLIPS[][4] = {
+//    {0,0,119,119}
+//};
 
-const int PLAYER_JUMPING_FRAMES = 1;
+//const int PLAYER_JUMPING_FRAMES = 1;
 
 #endif
 
