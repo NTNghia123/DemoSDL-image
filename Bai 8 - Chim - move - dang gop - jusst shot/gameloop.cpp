@@ -34,10 +34,12 @@ void Game::play(){
         player.updateToadoPlayer(keyboard);
         player.moveee();
 
-        if ( canShootFrame < ARROW_LOADING_TIME ) canShootFrame ++;
-        if ( player.Shooting && (canShootFrame == ARROW_LOADING_TIME) ){
+        if ( player.Shooting && !justShoot)
+        {
                 GameshootArrow ();
-                canShootFrame = 0;
+                justShoot = true;
+        }else{
+                justShoot = false;
         }
 
 
@@ -111,7 +113,7 @@ void Game::get() {
         arrow->texture = arrowTexture;
         SDL_QueryTexture(arrowTexture, NULL, NULL, &arrow->w, &arrow->h);
 
-
+        //player.reload = PLAYER_RELOAD;
     }
 
     void Game::doArrows()
@@ -129,5 +131,4 @@ void Game::get() {
         }
     }
     //ARROW_LOADING_TIME
-
 

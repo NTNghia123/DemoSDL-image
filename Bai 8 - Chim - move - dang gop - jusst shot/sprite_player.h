@@ -8,7 +8,7 @@
 #include "graphics.h"
 
 #define INITIAL_SPEED 65
-#define ARROW_LOADING_TIME 4
+#define ARROW_LOADING_TIME FPS * 10
 #define ARROW_SPEED 10
 class Sprite {
     private:

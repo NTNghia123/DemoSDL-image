@@ -16,7 +16,8 @@ private:
     Player player;
 
     SDL_Texture* arrowTexture;
-    int canShootFrame = 4;
+    bool justShoot = false;
+
     ScrollingBackground bg;
     SDL_Texture* staticBG;
 

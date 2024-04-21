@@ -216,7 +216,7 @@
 
 1713636379 d:\demosdl image\bai 8 - chim - move - dang gop - vector\defs.h
 
-1713640457 d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.h
+1713637858 d:\demosdl image\bai 8 - chim - move - dang gop - vector\sprite_player.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -242,14 +242,14 @@
 	"background.h"
 	"gameloop.h"
 
-1713640262 d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.h
+1713637824 d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.h
 	<iostream>
 	<list>
 	"defs.h"
 	"sprite_player.h"
 	"background.h"
 
-1713639823 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.cpp
+1713637824 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 
@@ -259,4 +259,55 @@
 
 1713631303 source:d:\demosdl image\bai 8 - chim - move - dang gop - vector\player.cpp
 	"sprite_player.h"
+
+1713544815 source:d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\graphics.cpp
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1713638950 d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\defs.h
+
+1713637858 d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\sprite_player.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+	"graphics.h"
+
+1713589369 d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	<list>
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1713002480 d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\background.h
+	"defs.h"
+
+1713582180 source:d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\main.cpp
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+	"gameloop.h"
+
+1713638316 d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\gameloop.h
+	<iostream>
+	<list>
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1713631303 source:d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\player.cpp
+	"sprite_player.h"
+
+1713604330 source:d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\sprite_player.cpp
+	"sprite_player.h"
+	"defs.h"
+
+1713638664 source:d:\demosdl image\bai 8 - chim - move - dang gop - jusst shot\gameloop.cpp
+	"gameloop.h"
+	"graphics.h"
 
