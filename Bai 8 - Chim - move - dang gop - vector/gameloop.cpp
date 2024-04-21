@@ -50,8 +50,6 @@ void Game::play(){
         healthBar.render(-13,0,renderer);
         explode.render(-195,0,renderer);
 
-        for (Sprite* a: arrows)
-        renderTexture(a->texture, a->x, a->y,renderer);
         doArrows();
 
         presentScene(renderer);
@@ -111,19 +109,21 @@ void Game::get() {
         arrow->texture = arrowTexture;
         SDL_QueryTexture(arrowTexture, NULL, NULL, &arrow->w, &arrow->h);
 
-
     }
 
     void Game::doArrows()
     {
+        for (Sprite* a: arrows)
+        renderTexture(a->texture, a->x, a->y,renderer);
+
         auto it = arrows.begin();
         while (it != arrows.end()) {
             auto temp = it++;
-            Sprite* b = *temp;
-            b->turnRight();
-            b->movee();
-            if ( b->x > SCREEN_WIDTH ) { //bulletHitFighter(b) ||
-                delete b;
+            Sprite* a = *temp;
+            a->turnRight();
+            a->movee();
+            if ( a->x > SCREEN_WIDTH ) { //bulletHitFighter(b) ||
+                delete a;
                 arrows.erase(temp);
             }
         }

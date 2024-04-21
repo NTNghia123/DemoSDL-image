@@ -16,7 +16,7 @@ private:
     Player player;
 
     SDL_Texture* arrowTexture;
-    int canShootFrame = 4;
+    int canShootFrame = ARROW_LOADING_TIME;
     ScrollingBackground bg;
     SDL_Texture* staticBG;
 
