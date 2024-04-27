@@ -212,7 +212,7 @@ struct Game {
             if (fighter->health == 0) {
                 delete fighter;
                 fighters.erase(temp);
-                continue;
+                // continue;
             }
         }
 

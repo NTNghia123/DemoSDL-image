@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     SDL_Event e;
     while( !quit ) {
 
-        //bird.tick(); // cap nhat frame
+        bird.tick(); // cap nhat frame
         //explode.tick();
         healthBar.tick();
         graphics.prepareScene();
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         graphics.renderTexture(staticBG,0,200);
         graphics.renderTexture(test,150,200);
         graphics.render(-13,0,healthBar);
-        //graphics.render(toado.x,toado.y,bird);
+        graphics.render(toado.x,toado.y,bird);
         graphics.render(-185,0,explode);
         graphics.presentScene();
         SDL_Delay(100);

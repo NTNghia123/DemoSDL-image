@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="05baa55c-ea4a-4123-95e1-fc00ad11e5f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/.idea/Bai 8 - Chim - move - dang gop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/DemoSDL.depend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/DemoSDL.layout" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/SDLimage.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/SDLimage.depend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/SDLimage.layout" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/background.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/background.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/defs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/gameloop.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/gameloop.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/graphics.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/graphics.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/adventurer-bow-Sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/arrow_long.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/grass_field.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/grass_field_resize.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/grass_field_resize_afterAse.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/health_bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/jumpp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/shoot1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/sky_crop.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/img/tower_exploding_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/player.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/sprite_player.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - jusst shot/sprite_player.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/.idea/Bai 8 - Chim - move - dang gop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/DemoSDL.depend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/DemoSDL.layout" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/SDLimage.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/SDLimage.depend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/SDLimage.layout" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/background.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/background.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/defs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/gameloop.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/gameloop.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/graphics.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/graphics.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/adventurer-bow-Sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/grass_field.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/grass_field_resize.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/grass_field_resize_afterAse.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/health_bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/jumpp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/shoot1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/sky_crop.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/img/tower_exploding_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/player.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/sprite_player.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move - dang gop - vector/sprite_player.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move/SDLimage.depend" beforeDir="false" afterPath="$PROJECT_DIR$/../Bai 8 - Chim - move/SDLimage.depend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move/SDLimage.layout" beforeDir="false" afterPath="$PROJECT_DIR$/../Bai 8 - Chim - move/SDLimage.layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bai 8 - Chim - move/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Bai 8 - Chim - move/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDLimage.depend" beforeDir="false" afterPath="$PROJECT_DIR$/SDLimage.depend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SDLimage.layout" beforeDir="false" afterPath="$PROJECT_DIR$/SDLimage.layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic.h" beforeDir="false" afterPath="$PROJECT_DIR$/logic.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2fb3yeLJKcXQIWLfQkv4C21Nac4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/DemoSDL image/Bai mau - shooting",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05baa55c-ea4a-4123-95e1-fc00ad11e5f7" name="Changes" comment="" />
+      <created>1714056205570</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714056205570</updated>
+      <workItem from="1714056206750" duration="12280000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

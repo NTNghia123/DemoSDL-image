@@ -1,16 +1,19 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <algorithm>
 #define INITIAL_SPEED 3
 #define MOUSE_SIZE 30
 #include "cheese.h"
-bool inside(int x, int y, SDL_Rect r) {
-    return x > r.x && x < r.x+r.w && y > r.y && y < r.y+r.h;
-}
+//bool inside(int x, int y, SDL_Rect r) {
+//    return x > r.x && x < r.x+r.w && y > r.y && y < r.y+r.h;
+//}
 
 bool overlap(const SDL_Rect& r1, const SDL_Rect& r2) {
-    return inside(r1.x, r1.y, r2) || inside(r1.x + r1.w, r1.y, r2) ||
-            inside(r1.x, r1.y+r1.h, r2) || inside(r1.x+r1.w, r1.y+r1.h, r2);
+//    return inside(r1.x, r1.y, r2) || inside(r1.x + r1.w, r1.y, r2) ||
+//            inside(r1.x, r1.y+r1.h, r2) || inside(r1.x+r1.w, r1.y+r1.h, r2);
+    return (std::max(r1.x, r2.x) < std::min(r1.x + r1.w, r2.x + r2.w))
+	        && (std::max(r1.y, r2.y) < std::min(r1.y + r1.h, r2.y + r2.h));
 }
 
 

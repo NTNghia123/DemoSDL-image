@@ -118,7 +118,7 @@ struct Graphics {
         SDL_RenderCopy(renderer, sprite.texture, clip, &renderQuad);
     }
 
-    TTF_Font* loadFont(const char* path, int size)
+     TTF_Font* loadFont(const char* path, int size)
     {
         TTF_Font* gFont = TTF_OpenFont( path, size );
         if (gFont == nullptr) {
@@ -127,7 +127,6 @@ struct Graphics {
                            "Load font %s", TTF_GetError());
         }
     }
-
      SDL_Texture* renderText(const char* text,
                             TTF_Font* font, SDL_Color textColor)
     {
@@ -147,7 +146,20 @@ struct Graphics {
                            SDL_LOG_PRIORITY_ERROR,
                            "Create texture from text %s", SDL_GetError());
         }
-        SDL_FreeSurface( textSurface );
+        int textWidth = textSurface->w;
+    int textHeight = textSurface->h;
+
+    // Tính toán vị trí để render chữ ra giữa màn hình
+    int x = (SCREEN_WIDTH - textWidth) / 2;
+    int y = 80;//(SCREEN_HEIGHT - textHeight) / 2;
+
+    // Render chữ ra giữa màn hình
+    SDL_Rect renderQuad = {x, y, textWidth, textHeight};
+    SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
+
+    // Giải phóng surface và texture
+    SDL_FreeSurface(textSurface);
+     SDL_DestroyTexture(texture);
         return texture;
     }
 

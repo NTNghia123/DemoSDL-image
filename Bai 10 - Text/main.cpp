@@ -13,11 +13,9 @@ int main(int argc, char *argv[])
     Graphics graphics;
     graphics.init();
 
-    TTF_Font* font = graphics.loadFont("assets/Purisa-BoldOblique.ttf", 100);
-    SDL_Color color = {255, 255, 0, 0};
-    SDL_Texture* helloText = graphics.renderText("Hello", font, color);
-
-
+    TTF_Font* font = graphics.loadFont("assets/Purisa-BoldOblique.ttf", 60);
+    SDL_Color color = {255, 0, 0, 0};
+    // SDL_Texture* helloText = graphics.renderText("Hello", font, color);
 
 
     Sprite bird;
@@ -33,21 +31,21 @@ int main(int argc, char *argv[])
         }
         bird.tick();
         graphics.prepareScene();
+
+        graphics.renderText("Hello", font, color);
+
         graphics.render(100,100,bird);
-
-        graphics.renderTexture(helloText, 200, 200);
-
         graphics.presentScene();
         SDL_Delay(100);
     }
 
+    // SDL_DestroyTexture( helloText );
+    TTF_CloseFont( font );
+    //helloText = NULL;
+
+
     SDL_DestroyTexture( birdTexture );
     birdTexture = NULL;
-
-    SDL_DestroyTexture( helloText );
-    TTF_CloseFont( font );
-    helloText = NULL;
-
 
     graphics.quit();
     return 0;

@@ -59,33 +59,20 @@
 	<vector>
 	"defs.h"
 
-1714019853 source:d:\demosdl image\bai 8 - chim - move\main.cpp
-	"defs.h"
-	"graphics.h"
-	"chim.h"
-	"background.h"
-
-1713294835 d:\demosdl image\bai 8 - chim - move\defs.h
-
-1713294960 d:\demosdl image\bai 8 - chim - move\graphics.h
-	<SDL.h>
-	<SDL_image.h>
-	<vector>
-	"defs.h"
-	"chim.h"
-	"background.h"
-
-1713279811 d:\demosdl image\bai 8 - chim - move\chim.h
+1714210374 source:d:\demosdl image\bai 10 - text\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_ttf.h>
 	<vector>
 	"defs.h"
+	"graphics.h"
 
-1713283627 source:d:\demosdl image\bai 8 - chim - move\chim.cpp
-	"chim.h"
-	"defs.h"
+1712770725 d:\demosdl image\bai 10 - text\defs.h
 
-1713002480 d:\demosdl image\bai 8 - chim - move\background.h
+1714210417 d:\demosdl image\bai 10 - text\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
 	"defs.h"
 
