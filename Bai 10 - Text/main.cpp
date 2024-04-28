@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         bird.tick();
         graphics.prepareScene();
 
-        graphics.renderText("Hello", font, color);
+        graphics.renderText(4, font, color);
 
         graphics.render(100,100,bird);
         graphics.presentScene();

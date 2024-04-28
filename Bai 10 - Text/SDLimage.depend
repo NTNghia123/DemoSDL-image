@@ -59,7 +59,7 @@
 	<vector>
 	"defs.h"
 
-1714210374 source:d:\demosdl image\bai 10 - text\main.cpp
+1714279008 source:d:\demosdl image\bai 10 - text\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -70,9 +70,10 @@
 
 1712770725 d:\demosdl image\bai 10 - text\defs.h
 
-1714210417 d:\demosdl image\bai 10 - text\graphics.h
+1714279062 d:\demosdl image\bai 10 - text\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<vector>
+	<string>
 	"defs.h"
 

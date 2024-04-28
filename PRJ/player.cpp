@@ -68,7 +68,14 @@ void Player::render(SDL_Renderer *renderer) {
 
         SDL_RenderCopy(renderer,PlayerTexture[currentTexture], clip, &renderQuad);
 
-        tick();
+        if (isStanding){
+            tick();
+            if (currentFrame == 2 ) currentFrame = 0 ;
+        }
+        if (isShooting){
+                tick();
+        }
+        if (Jumping && !Shooting) currentFrame = 0;
     }
 
 void Zombie::renderZombie(SDL_Renderer *renderer){

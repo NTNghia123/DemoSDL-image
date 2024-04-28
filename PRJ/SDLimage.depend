@@ -317,7 +317,7 @@
 	"sprite_player.h"
 	"defs.h"
 
-1714297422 source:d:\demosdl image\prj - copy\gameloop.cpp
+1714285359 source:d:\demosdl image\prj - copy\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 
@@ -366,7 +366,7 @@
 	"background.h"
 	"gameloop.h"
 
-1714297181 source:d:\demosdl image\prj - copy\player.cpp
+1714285990 source:d:\demosdl image\prj - copy\player.cpp
 	"sprite_player.h"
 
 1714111699 source:d:\demosdl image\prj - copy\sprite_player.cpp

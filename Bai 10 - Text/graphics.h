@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
+#include <string>
 #include "defs.h"
 struct Sprite {
     SDL_Texture* texture;
@@ -111,14 +112,7 @@ struct Graphics {
 
         SDL_RenderCopy(renderer, texture, NULL, &dest);
     }
-
-    void render(int x, int y, const Sprite& sprite) {
-        const SDL_Rect* clip = sprite.getCurrentClip();
-        SDL_Rect renderQuad = {x, y, clip->w, clip->h};
-        SDL_RenderCopy(renderer, sprite.texture, clip, &renderQuad);
-    }
-
-     TTF_Font* loadFont(const char* path, int size)
+    TTF_Font* loadFont(const char* path, int size)
     {
         TTF_Font* gFont = TTF_OpenFont( path, size );
         if (gFont == nullptr) {
@@ -127,42 +121,43 @@ struct Graphics {
                            "Load font %s", TTF_GetError());
         }
     }
-     SDL_Texture* renderText(const char* text,
-                            TTF_Font* font, SDL_Color textColor)
-    {
-        SDL_Surface* textSurface =
-                TTF_RenderText_Solid( font, text, textColor );
-        if( textSurface == nullptr ) {
-            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,
-                           SDL_LOG_PRIORITY_ERROR,
-                           "Render text surface %s", TTF_GetError());
-            return nullptr;
-        }
+    void render(int x, int y, const Sprite& sprite) {
+        const SDL_Rect* clip = sprite.getCurrentClip();
+        SDL_Rect renderQuad = {x, y, clip->w, clip->h};
+        SDL_RenderCopy(renderer, sprite.texture, clip, &renderQuad);
+    }
 
-        SDL_Texture* texture =
-                SDL_CreateTextureFromSurface( renderer, textSurface );
-        if( texture == nullptr ) {
-            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,
-                           SDL_LOG_PRIORITY_ERROR,
-                           "Create texture from text %s", SDL_GetError());
-        }
-        int textWidth = textSurface->w;
+    SDL_Texture* renderText(int number, TTF_Font* font, SDL_Color textColor) {
+    // Chuyển đổi số nguyên thành chuỗi
+    std::string text = std::to_string(number);
+
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
+    if (textSurface == nullptr) {
+        SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,
+                       SDL_LOG_PRIORITY_ERROR,
+                       "Render text surface %s", TTF_GetError());
+        return nullptr;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    if (texture == nullptr) {
+        SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,
+                       SDL_LOG_PRIORITY_ERROR,
+                       "Create texture from text %s", SDL_GetError());
+    }
+
+    int textWidth = textSurface->w;
     int textHeight = textSurface->h;
 
-    // Tính toán vị trí để render chữ ra giữa màn hình
     int x = (SCREEN_WIDTH - textWidth) / 2;
-    int y = 80;//(SCREEN_HEIGHT - textHeight) / 2;
+    int y = 80;
 
-    // Render chữ ra giữa màn hình
     SDL_Rect renderQuad = {x, y, textWidth, textHeight};
     SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
 
-    // Giải phóng surface và texture
-    SDL_FreeSurface(textSurface);
-     SDL_DestroyTexture(texture);
-        return texture;
-    }
-
+    SDL_FreeSurface(textSurface); // Giải phóng bộ nhớ của surface sau khi tạo texture
+    return texture;
+}
 
     void quit()
     {

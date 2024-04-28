@@ -189,7 +189,7 @@ void Game::get() {
             int decideHard = 0;
             if ( point <= 20 ) decideHard = 15;
             else if ( point <= 40) decideHard = 10;
-            else decideHard = 3 - rand() % 3;
+            else decideHard = 3;
             zombie->dx =  -20 + ( rand() % decideHard);
             zombie->health = 1;
 
@@ -200,7 +200,7 @@ void Game::get() {
             decideHard = 0;
             if ( point <= 20 ) decideHard = 2;
             else if ( point <= 40) decideHard = 3;
-            else decideHard = 6 + rand() % 2;
+            else decideHard = 6;
             zombieSpawnTime = 8 - (rand() % decideHard );
 
             zombie->initClip(zombieEnter,ZOMBIE_FRAMES,ZOMBIE_CLIPS);
