@@ -317,11 +317,12 @@
 	"sprite_player.h"
 	"defs.h"
 
-1714709397 source:d:\demosdl image\prj - copy\gameloop.cpp
+1714716647 source:d:\demosdl image\prj - copy\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
+	"score.h"
 
-1714709619 d:\demosdl image\prj - copy\gameloop.h
+1714712081 d:\demosdl image\prj - copy\gameloop.h
 	<iostream>
 	<list>
 	<ctime>
@@ -372,4 +373,13 @@
 1714111699 source:d:\demosdl image\prj - copy\sprite_player.cpp
 	"sprite_player.h"
 	"defs.h"
+
+1714717106 source:d:\demosdl image\prj - copy\score.cpp
+	"score.h"
+
+1714716647 d:\demosdl image\prj - copy\score.h
+	<fstream>
+	<iostream>
+	<vector>
+	<algorithm>
 

@@ -29,7 +29,8 @@ private:
     int stageResetTimer;
     int FPS = 10;
 
-    int point;
+    int score;
+    int bestScore;
     TTF_Font* fontScore, *fontText;
     SDL_Color color;
 

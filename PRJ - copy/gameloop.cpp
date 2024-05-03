@@ -1,9 +1,10 @@
 #include "gameloop.h"
 #include "graphics.h"
-
+#include "score.h"
 void Game::initGame() {
 
 	init();
+	eraseFileData("score.txt","top_score.txt");
 	for (int i = 0; i < MAX_KEYBOARD_KEYS; i++) keyboard[i] = 0;
 	window = initWin();
 	renderer = initRen(window);
@@ -60,7 +61,9 @@ void Game::play(){
         render(bg,renderer);
         renderTexture(staticBG,0,200,renderer);
 
-        renderScore(point, fontScore,color,renderer);
+        writeGameScore(score);
+        readBestscore(bestScore,score);
+        renderScore(score, fontScore,color,renderer);
 
         spawnZombies();
         doZombies();
@@ -188,8 +191,8 @@ void Game::get() {
 
             zombie->isDying = false;
             int decideHard = 0;
-            if ( point <= 20 ) decideHard = 15;
-            else if ( point <= 40) decideHard = 10;
+            if ( score <= 20 ) decideHard = 15;
+            else if ( score <= 40) decideHard = 10;
             else decideHard = 3 - rand() % 3;
             zombie->dx =  -20 + ( rand() % decideHard);
             zombie->health = 1;
@@ -199,8 +202,8 @@ void Game::get() {
             zombie->ZombieTexture.push_back(zombieDie);
 
             decideHard = 0;
-            if ( point <= 20 ) decideHard = 2;
-            else if ( point <= 40) decideHard = 3;
+            if ( score <= 20 ) decideHard = 2;
+            else if ( score <= 40) decideHard = 3;
             else decideHard = 6 + rand() % 2;
             zombieSpawnTime = 8 - (rand() % decideHard );
 
@@ -222,7 +225,7 @@ void Game::get() {
             continue;
         }
         if ( zombie->health == -1  && zombie->currentTexture == 2 && zombie->currentFrame == 3){
-            point ++;
+            score ++;
             delete zombie;
             zombies.erase(temp);
             continue;
@@ -262,7 +265,8 @@ void Game::get() {
 //
 //    for (Zombie* z : zombies) delete z;
 //    zombies.clear();
-    point = 0 ;
+    rewriteTopScore(score);
+    score = 0 ;
     emptyZombie(zombies);
     empty(arrows);
 
