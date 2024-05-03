@@ -8,8 +8,9 @@ void Game::initGame() {
 	window = initWin();
 	renderer = initRen(window);
 
-	font = loadFont("assets/Purisa-BoldOblique.ttf", 100);
-    color = {255, 0, 0, 0};
+	fontScore = loadFont("assets/pixel.TTF", 80);
+    fontText = loadFont("assets/Karma Suture.otf", 30);
+    color = {255,69,100, 0};
 
 	explode.initClip(loadTexture(TOWER_EXPLODE_FILE,renderer), TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
 	healthBar.initClip(loadTexture(HEALTH_BAR,renderer), HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
@@ -59,7 +60,7 @@ void Game::play(){
         render(bg,renderer);
         renderTexture(staticBG,0,200,renderer);
 
-        renderText(point, font,color,renderer);
+        renderScore(point, fontScore,color,renderer);
 
         spawnZombies();
         doZombies();

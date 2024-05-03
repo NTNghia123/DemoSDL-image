@@ -127,7 +127,7 @@ struct Graphics {
         SDL_RenderCopy(renderer, sprite.texture, clip, &renderQuad);
     }
 
-    SDL_Texture* renderText(int number, TTF_Font* font, SDL_Color textColor) {
+    SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor) {
     // Chuyển đổi số nguyên thành chuỗi
     std::string text = std::to_string(number);
 
@@ -158,6 +158,22 @@ struct Graphics {
     SDL_FreeSurface(textSurface); // Giải phóng bộ nhớ của surface sau khi tạo texture
     return texture;
 }
+    SDL_Texture* renderText(const char* text, TTF_Font* font, SDL_Color textColor)
+    {
+        SDL_Surface* textSurface = TTF_RenderText_Solid( font, text, textColor );
+        if( textSurface == nullptr ) {
+            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Render text surface %s", TTF_GetError());
+            return nullptr;
+        }
+
+        SDL_Texture* texture = SDL_CreateTextureFromSurface( renderer, textSurface );
+        if( texture == nullptr ) {
+            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Create texture from text %s", SDL_GetError());
+        }
+
+        SDL_FreeSurface( textSurface );
+        return texture;
+    }
 
     void quit()
     {

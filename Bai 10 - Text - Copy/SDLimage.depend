@@ -77,3 +77,26 @@
 	<string>
 	"defs.h"
 
+1714706141 source:d:\demosdl image\bai 10 - text - copy\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<ctime>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<vector>
+	<string.h>
+	"defs.h"
+	"graphics.h"
+
+1712770725 d:\demosdl image\bai 10 - text - copy\defs.h
+
+1714706233 d:\demosdl image\bai 10 - text - copy\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	<string>
+	"defs.h"
+

@@ -7,6 +7,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <vector>
+#include <string.h>
 #include "defs.h"
 #include "graphics.h"
 using namespace std;
@@ -40,14 +41,19 @@ int main(int argc, char *argv[])
     Graphics graphics;
     graphics.init();
 
-    TTF_Font* font = graphics.loadFont("assets/Purisa-BoldOblique.ttf", 60);
-    SDL_Color color = {255, 0, 0, 0};
+    TTF_Font* fontScore = graphics.loadFont("assets/pixel.TTF", 80);
+    //TTF_Font* fontText = graphics.loadFont("assets/Karma Future.otf", 30);
+    TTF_Font* fontText = graphics.loadFont("assets/Karma Suture.otf", 30);
+    // SDL_Color color = {255, 223, 0, 0}; // vang
+    SDL_Color color = {255,69,0, 0};
     // SDL_Texture* helloText = graphics.renderText("Hello", font, color);
 
 
     Sprite bird;
     SDL_Texture* birdTexture = graphics.loadTexture(BIRD_SPRITE_FILE);
     bird.init(birdTexture, BIRD_FRAMES, BIRD_CLIPS);
+
+    SDL_Texture* bg = graphics.loadTexture("img/sky_crop.jpg");
 
 
     bool quit = false;
@@ -58,7 +64,8 @@ int main(int argc, char *argv[])
         while( SDL_PollEvent( &e ) != 0 ) {
             if( e.type == SDL_QUIT ) quit = true;
         }
-        score = rand();
+        //score = rand();
+        score ++;
 
         writeFile(score);
         readBestscore(bestScore);
@@ -66,15 +73,17 @@ int main(int argc, char *argv[])
         bird.tick();
         graphics.prepareScene();
 
-        graphics.renderText(bestScore, font, color);
+        graphics.renderTexture(bg,0,0);
+        graphics.renderScore(score, fontScore, color);
+        graphics.renderText("High Score: " + std::to_string(bestScore),fontText,color,0,0);
 
-        graphics.render(100,100,bird);
+        //graphics.render(100,100,bird);
         graphics.presentScene();
         SDL_Delay(200);
     }
 
     // SDL_DestroyTexture( helloText );
-    TTF_CloseFont( font );
+    TTF_CloseFont( fontScore );
     //helloText = NULL;
 
 

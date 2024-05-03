@@ -30,7 +30,7 @@ private:
     int FPS = 10;
 
     int point;
-    TTF_Font* font;
+    TTF_Font* fontScore, *fontText;
     SDL_Color color;
 
     int keyboard[MAX_KEYBOARD_KEYS] = {0};

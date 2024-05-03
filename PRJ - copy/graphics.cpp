@@ -95,7 +95,6 @@
         renderTexture(background.texture, background.scrollingOffset - background.width, 0,renderer);
     }
 
-
 TTF_Font* loadFont(const char* path, int size)
     {
         TTF_Font* gFont = TTF_OpenFont( path, size );
@@ -104,9 +103,10 @@ TTF_Font* loadFont(const char* path, int size)
                            SDL_LOG_PRIORITY_ERROR,
                            "Load font %s", TTF_GetError());
         }
+        return gFont;
     }
-
-    SDL_Texture* renderText(int number, TTF_Font* font, SDL_Color textColor,SDL_Renderer *renderer) {
+SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Renderer *renderer) {
+    // Chuyển đổi số nguyên thành chuỗi
     std::string text = std::to_string(number);
 
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
@@ -128,7 +128,7 @@ TTF_Font* loadFont(const char* path, int size)
     int textHeight = textSurface->h;
 
     int x = (SCREEN_WIDTH - textWidth) / 2;
-    int y = 15;
+    int y = 80;
 
     SDL_Rect renderQuad = {x, y, textWidth, textHeight};
     SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
@@ -136,6 +136,28 @@ TTF_Font* loadFont(const char* path, int size)
     SDL_FreeSurface(textSurface); // Giải phóng bộ nhớ của surface sau khi tạo texture
     return texture;
 }
+    SDL_Texture* renderText(std::string text, TTF_Font* font, SDL_Color textColor, int x, int y, SDL_Renderer *renderer)
+    {
+        SDL_Surface* textSurface = TTF_RenderText_Solid( font, text.c_str(), textColor );
+        if( textSurface == nullptr ) {
+            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Render text surface %s", TTF_GetError());
+            return nullptr;
+        }
+
+        SDL_Texture* texture = SDL_CreateTextureFromSurface( renderer, textSurface );
+        if( texture == nullptr ) {
+            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Create texture from text %s", SDL_GetError());
+        }
+
+        int textWidth = textSurface->w;
+        int textHeight = textSurface->h;
+        x = SCREEN_WIDTH - textWidth; // cho high score
+        SDL_Rect renderQuad = {x, y, textWidth, textHeight};
+        SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
+
+        SDL_FreeSurface( textSurface );
+        return texture;
+    }
 
 void waitUntilKeyPressed()
 {
