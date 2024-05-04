@@ -8,17 +8,12 @@ void writeGameScore(const int score){
     file.close();
     return;
 }
-void eraseFileData(const char * path1, const char * path2){
-    std::ofstream file(path1);
+void eraseFileData(const char * path){
+    std::ofstream file(path);
     if ( file.is_open()){
         file << "0" << std::endl;
     }
     file.close();
-    std::ofstream filee(path2);
-    if ( filee.is_open()){
-        filee << "0" << std::endl;
-    }
-    filee.close();
     return;
 }
 void rewriteTopScore(const int score) {

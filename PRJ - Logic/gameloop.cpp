@@ -4,7 +4,8 @@
 void Game::initGame() {
 
 	init();
-	eraseFileData("score.txt","top_score.txt");
+	eraseFileData("score.txt");
+	eraseFileData("top_score.txt");
 	for (int i = 0; i < MAX_KEYBOARD_KEYS; i++) keyboard[i] = 0;
 	window = initWin();
 	renderer = initRen(window);
@@ -15,6 +16,8 @@ void Game::initGame() {
 
 	explode.initClip(loadTexture(TOWER_EXPLODE_FILE,renderer), TOWER_EXPLODE_FRAMES, TOWER_EXPLODE_CLIPS);
 	healthBar.initClip(loadTexture(HEALTH_BAR,renderer), HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
+	pauseButton.initClip(loadTexture("img\\pause_frame.png",renderer), PAUSE_FRAMES, PAUSE_CLIPS);
+	SDL_QueryTexture(loadTexture("img\\pause_1frame.png",renderer), NULL, NULL, &pauseButton.w, &pauseButton.h);
 
     bg.setTexture(loadTexture(BG_DAY,renderer));
     STATIC_BG_day = loadTexture(STATIC_BG_DAY,renderer);
@@ -51,6 +54,13 @@ void Game::play(){
         if ( explode.currentFrame >= 1 ) FPS = 5;
         else FPS = 10;
         int frameStart = SDL_GetTicks();
+        get();
+        updateEvent();
+        if (pause) {
+            pauseButton.render(SCREEN_WIDTH - 63,0,renderer);
+            presentScene(renderer);
+        }
+        if (!pause){
         prepareScene(renderer);
 
         if (bg.scrollingOffset == 4){
@@ -72,8 +82,6 @@ void Game::play(){
                 reset();
                 SDL_Delay(1000 * 10/ FPS);
         }
-        get();
-        player.updateToadoPlayer(keyboard);
         player.moveee();
 
         if ( canShootFrame < ARROW_LOADING_TIME ) canShootFrame ++;
@@ -105,13 +113,16 @@ void Game::play(){
 
         player.render(renderer);
         explode.render(-195,0,renderer);
+        pauseButton.render(SCREEN_WIDTH - 63,0,renderer);
 
         presentScene(renderer);
+        }
 
         int frameTime = SDL_GetTicks() - frameStart;
         if (frameTime < 1000 / FPS) {
             SDL_Delay((1000 / FPS) - frameTime);
         }
+
     }
 }
 
@@ -137,7 +148,14 @@ void Game::get() {
                         keyboard[event.key.keysym.scancode] = 0;
                     }
                     break;
-
+                case SDL_MOUSEBUTTONDOWN:
+                    SDL_GetMouseState(&mouseX,&mouseY);
+                    if( mouseX >= SCREEN_WIDTH - pauseButton.w && mouseY <= pauseButton.h ){
+                        if (pause) pause = false;
+                        else if (!pause) pause = true;
+                        pauseButton.tick();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -155,6 +173,17 @@ void Game::get() {
         player.isStanding = true;
         player.Shooting = false;
         player.isShooting = false;
+        }
+    }
+    void Game::updateEvent(){
+        player.dx = player.dy = 0;
+        if (keyboard[SDL_SCANCODE_UP]) player.turnUpp();
+        if (keyboard[SDL_SCANCODE_DOWN]) player.turnDownn();
+        if (keyboard[SDL_SCANCODE_S]) player.shootArrow();
+        if (keyboard[SDL_SCANCODE_P]) {
+            if (pause) pause = false;
+            else if (!pause) pause = true;
+            pauseButton.tick();
         }
     }
     void Game::GameshootDayArrow()
@@ -190,6 +219,7 @@ void Game::get() {
         break;
         case 2:
             arrow->texture = purpleTexture;
+            arrow->penetrate = 1;
         break;
         }
         SDL_QueryTexture(arrowTexture, NULL, NULL, &arrow->w, &arrow->h);
@@ -207,17 +237,20 @@ void Game::get() {
             }
             else {
                 if (zombie->health > 0) zombie->health --;
-                zombie->x += 60;
                 switch (arrow->randomTexture){
             case 0:
-                if ( zombie->health == 2) zombie->health --;
+                if ( zombie->health > 0) zombie->health --;
                 break;
             case 1:
+                zombie->x += 50;
                 zombie->dx = -1;
                 break;
             case 2:
-                score ++;
-                zombie->dx = -3;
+                zombie->dx = -6;
+                if ( arrow->penetrate == 1){
+                    arrow->penetrate --;
+                    return false;
+                }
                 break;
                 }
             }
@@ -258,14 +291,18 @@ void Game::get() {
 
             zombie->isDying = false;
             int decideHard = 0;
-            if ( score <= 20 ) decideHard = 15;
-            else if ( score <= 40) decideHard = 10;
-            else decideHard = 3 - rand() % 3;
-            zombie->dx =  -20 + ( rand() % decideHard);
             if ( !night ){
+                    if ( score <= 20 ) decideHard = 15;
+                    else if ( score <= 40) decideHard = 10;
+                    else decideHard = rand() % 2 + 1;
+                    zombie->dx =  -25 + ( rand() % decideHard);
                     zombie->health = 1;
                     zombie->nightZombie = false;
             }else{
+                    if ( score <= 20 ) decideHard = 15;
+                    else if ( score <= 40) decideHard = 10;
+                    else decideHard = 3 - rand() % 3;
+                    zombie->dx =  -20 + ( rand() % decideHard);
                     zombie->health = 2;
                     zombie->nightZombie = true;
             }
@@ -277,7 +314,7 @@ void Game::get() {
             decideHard = 0;
             if ( score <= 20 ) decideHard = 2;
             else if ( score <= 40) decideHard = 3;
-            else decideHard = 6 + rand() % 2;
+            else decideHard = 6 + rand() % 3;
             zombieSpawnTime = 8 - (rand() % decideHard );
 
             zombie->initClip(zombieEnter,ZOMBIE_FRAMES,ZOMBIE_CLIPS);
@@ -334,8 +371,11 @@ void Game::get() {
     }
     void Game::reset()
     {
+    pause = false;
     rewriteTopScore(score);
     score = 0 ;
+    eraseFileData("score.txt");
+
     emptyZombie(zombies);
     empty(arrows);
 

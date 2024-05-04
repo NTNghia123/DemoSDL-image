@@ -151,7 +151,8 @@ SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Ren
 
         int textWidth = textSurface->w;
         int textHeight = textSurface->h;
-        x = SCREEN_WIDTH - textWidth; // cho high score
+        x = SCREEN_WIDTH - textWidth - 63 ; // cho high score
+        y += 5;
         SDL_Rect renderQuad = {x, y, textWidth, textHeight};
         SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
 

@@ -74,6 +74,12 @@ const int ZOMBIE_CLIPS[][4] = {
 };
 const int ZOMBIE_FRAMES = sizeof(ZOMBIE_CLIPS)/sizeof(int)/4;
 
+const int PAUSE_CLIPS[][4] = {
+    {0,0,63,64},
+    {63,0,63,64}
+};
+const int PAUSE_FRAMES = sizeof(PAUSE_CLIPS)/sizeof(int)/4;
+
 
 
 #endif

@@ -17,6 +17,7 @@ class Sprite {
     std::vector <SDL_Rect> clips;
     int currentFrame = 0;
     int randomTexture = 0;
+    int penetrate;
 
     int health;
     int x;
@@ -58,7 +59,6 @@ class Player : public Sprite{
 
 
     void PlayerInit();
-    void updateToadoPlayer(int keyboard[]);
     void render(SDL_Renderer *renderer);
     void turnUpp();
     void turnDownn();

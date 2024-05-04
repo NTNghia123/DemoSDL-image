@@ -14,6 +14,7 @@ private:
 	SDL_Renderer* renderer;
 	Sprite explode;
     Sprite healthBar;
+    Sprite pauseButton;
     std::list<Sprite*> arrows;
     std::list<Zombie*> zombies;
     Player player;
@@ -34,6 +35,8 @@ private:
     int zombieSpawnTime;
     int stageResetTimer;
     int FPS = 10;
+    bool pause;
+    int mouseX, mouseY;
 
     int score;
     int bestScore;
@@ -47,6 +50,7 @@ public:
 	void initGame();
 	void play();
     void get();
+    void updateEvent();
     void GameshootDayArrow();
     void GameshootNightArrow();
     void doArrows();

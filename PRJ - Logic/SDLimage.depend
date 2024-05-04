@@ -449,12 +449,12 @@
 	"sprite_player.h"
 	"defs.h"
 
-1714798337 source:d:\demosdl image\prj - logic\gameloop.cpp
+1714831486 source:d:\demosdl image\prj - logic\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 	"score.h"
 
-1714794900 d:\demosdl image\prj - logic\gameloop.h
+1714831165 d:\demosdl image\prj - logic\gameloop.h
 	<iostream>
 	<list>
 	<ctime>
@@ -463,9 +463,9 @@
 	"sprite_player.h"
 	"background.h"
 
-1714793285 d:\demosdl image\prj - logic\defs.h
+1714831165 d:\demosdl image\prj - logic\defs.h
 
-1714793285 d:\demosdl image\prj - logic\sprite_player.h
+1714830883 d:\demosdl image\prj - logic\sprite_player.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -488,13 +488,13 @@
 1713002480 d:\demosdl image\prj - logic\background.h
 	"defs.h"
 
-1714716647 d:\demosdl image\prj - logic\score.h
+1714799913 d:\demosdl image\prj - logic\score.h
 	<fstream>
 	<iostream>
 	<vector>
 	<algorithm>
 
-1714709480 source:d:\demosdl image\prj - logic\graphics.cpp
+1714831251 source:d:\demosdl image\prj - logic\graphics.cpp
 	"defs.h"
 	"sprite_player.h"
 	"background.h"
@@ -505,10 +505,10 @@
 	"background.h"
 	"gameloop.h"
 
-1714297181 source:d:\demosdl image\prj - logic\player.cpp
+1714803820 source:d:\demosdl image\prj - logic\player.cpp
 	"sprite_player.h"
 
-1714798377 source:d:\demosdl image\prj - logic\score.cpp
+1714799913 source:d:\demosdl image\prj - logic\score.cpp
 	"score.h"
 
 1714111699 source:d:\demosdl image\prj - logic\sprite_player.cpp

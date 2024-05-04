@@ -1,14 +1,5 @@
 #include "sprite_player.h"
-void Player::updateToadoPlayer(int keyboard[])
-    {
-//        if (player.health == 0) return;
-//
-          dx = dy = 0;
-//
-        if (keyboard[SDL_SCANCODE_UP]) turnUpp();
-        if (keyboard[SDL_SCANCODE_DOWN]) turnDownn();
-        if (keyboard[SDL_SCANCODE_S]) shootArrow();
-    }
+
     void Player::turnUpp(){
         if ( y - speed >= INIT_Y ){
         dx = 0;
