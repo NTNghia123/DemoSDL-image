@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1708615755 source:d:\demosdl image\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1709464782 source:d:\demosdl image - default\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
