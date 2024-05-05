@@ -35,7 +35,6 @@
     return window;
 }
 
-
     SDL_Renderer* initRen(SDL_Window* window) {
 
     if (!IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG))
@@ -63,7 +62,21 @@
 
         return texture;
     }
-
+    void createCustomCursor() {
+    SDL_Surface* cursorSurface = IMG_Load("assets/hand_cursor.png");
+    if (!cursorSurface) {
+        SDL_Log("Failed to load cursor image: %s", IMG_GetError());
+        return;
+    }
+    SDL_Cursor* cursor = SDL_CreateColorCursor(cursorSurface, 0, 0);
+    if (!cursor) {
+        SDL_Log("Failed to create cursor: %s", SDL_GetError());
+        SDL_FreeSurface(cursorSurface);
+        return;
+    }
+    SDL_SetCursor(cursor);
+    SDL_FreeSurface(cursorSurface);
+}
     void prepareScene(SDL_Texture * background,SDL_Renderer *renderer)
     {
         SDL_RenderClear(renderer);
@@ -167,8 +180,8 @@ SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Ren
 
         int textWidth = textSurface->w;
         int textHeight = textSurface->h;
-        x = SCREEN_WIDTH - textWidth - 63 ; // cho high score
-        y += 5;
+        x -= textWidth  ;
+
         SDL_Rect renderQuad = {x, y, textWidth, textHeight};
         SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
 

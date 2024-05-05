@@ -10,12 +10,17 @@ void Game::initGame() {
 	for (int i = 0; i < MAX_KEYBOARD_KEYS; i++) keyboard[i] = 0;
 	window = initWin();
 	renderer = initRen(window);
+	createCustomCursor();
 
 	fontScore = loadFont("assets/pixel.TTF", 80);
     fontText = loadFont("assets/Karma Suture.otf", 30);
-    color = {255,69,100, 0};
+    fontComboOkay = loadFont("assets/shocktherapy-bb.italic.ttf", 40);
+    fontComboGoody = loadFont("assets/shocktherapy-bb.italic.ttf", 50);
+    fontComboCrazy = loadFont("assets/shocktherapy-bb.italic.ttf", 60);
+    color = {255,69,100,0};
 
-    MenuTexture.texture = loadTexture("img\\menu.jpg",renderer);
+    //MenuTexture.texture = loadTexture("img\\menu.jpg",renderer);
+    MenuTexture.texture = loadTexture("img\\noon.png",renderer);
     pauseMenuTexture.texture = loadTexture("img\\pause_menu.png",renderer);
     replayButton.texture = loadTexture("img\\square.png",renderer);
     toMenuButton.texture = loadTexture("img\\square.png",renderer);
@@ -48,6 +53,10 @@ void Game::initGame() {
     purpleTexture = loadTexture("img\\purple.png",renderer);
     ARROW_LOADING_TIME = 3;
 
+    boomTexture = loadTexture("img\\boom.png",renderer);
+    boom1Frame = loadTexture("img\\boom1frame.png",renderer);
+    SDL_QueryTexture(boom1Frame, NULL, NULL, &boom1FrameW, &boom1FrameH);
+
     zombieDie = loadTexture(ZOMBIE_DIE,renderer);
     zombieEnter = loadTexture(ZOMBIE_ENTER,renderer);
     zombieWalk = loadTexture(ZOMBIE_WALK,renderer);
@@ -59,6 +68,8 @@ void Game::initGame() {
     status = 0;
     score = 0;
     bestScore = 0;
+    bestScoreX = SCREEN_WIDTH - 63 ;
+    bestScoreY = 5;
     reset();
 }
 void Game::play(){
@@ -117,6 +128,7 @@ void Game::play(){
                 reset();
                 SDL_Delay(1000 * 10/ FPS);
         }
+        if ( comboLoadingTime > 0) comboLoadingTime --;
         player.moveee();
 
         if ( canShootFrame < ARROW_LOADING_TIME ) canShootFrame ++;
@@ -133,6 +145,8 @@ void Game::play(){
         spawnZombies();
         doZombies();
         doArrows();
+        doBoom();
+        doCombo();
 
         healthBar.currentFrame = player.health ;
         healthBar.render(-13,0,renderer);
@@ -144,13 +158,20 @@ void Game::play(){
         writeGameScore(score);
         readBestscore(bestScore,score);
         renderScore(score, fontScore,color,renderer);
-        renderText("High Score: " + std::to_string(bestScore),fontText,color,0,0,renderer);
+        renderText("High Score: " + std::to_string(bestScore),fontText,color,bestScoreX,bestScoreY,renderer);
+        if (comboCount > 0 && comboCount <= 3 ) renderText("OKAY",fontComboOkay,color,SCREEN_WIDTH - 20,100, renderer);
+        else if (comboCount > 3 && comboCount <= 6 ) renderText("GOOD",fontComboGoody,color,SCREEN_WIDTH - 20 ,100, renderer);
+        else if (comboCount > 6 ) renderText("CRAZY!!!",fontComboCrazy,color,SCREEN_WIDTH - 20,100, renderer);
 
         player.render(renderer);
         tower.render(-195,0,renderer);
         pauseButton.render(SCREEN_WIDTH - 63,0,renderer);
 
         presentScene(renderer);
+
+        if ( comboLoadingTime == 0 && comboCount == prev_comboCount) comboCount = 0;
+        std::cerr << comboCount << " " << prev_comboCount << std::endl;
+        prev_comboCount = comboCount;
         }
         break;
         }
@@ -337,6 +358,29 @@ void Game::play(){
 	    return (std::max(x, arrow->x ) < std::min(x + w, arrow->x + arrow->w))
 	        && (std::max(y, arrow->y) < std::min(y + h, arrow->y + arrow->h));
 	}
+	void Game::boomAtCollision(Zombie* zombie, Sprite* arrow) {
+    Sprite* boom = new Sprite();
+    booms.push_back(boom);
+
+    boom->x = zombie->x + zombie->w/2 - boom1FrameW/2;
+    boom->y = zombie->y + zombie->h/2 - boom1FrameH/2;
+
+    boom->initClip(boomTexture,BOOM_FRAMES,BOOM_CLIPS);
+    }
+    void Game::doBoom() {
+    auto it = booms.begin();
+        while (it != booms.end()) {
+            auto temp = it++;
+            Sprite* b = *temp;
+            b->render(b->x,b->y,renderer);
+            if ( b->currentFrame == 5 ) {
+                delete b;
+                arrows.erase(temp);
+                continue;
+            }
+            b->tick();
+        }
+    }
     bool Game::checkCollides(Sprite * arrow)
     {
         for (Zombie* zombie: zombies) {
@@ -349,6 +393,7 @@ void Game::play(){
                 switch (arrow->randomTexture){
             case 0:
                 if ( zombie->health > 0) zombie->health --;
+                if (night == true) boomAtCollision(zombie,arrow);
                 break;
             case 1:
                 zombie->x += 50;
@@ -450,12 +495,20 @@ void Game::play(){
             continue;
         }
         if ( zombie->health == -1  && zombie->currentTexture == ZOMBIE_DIE_TEXT && zombie->currentFrame == 3){
-            score ++;
             delete zombie;
             zombies.erase(temp);
             continue;
         }
         else if ( zombie->health == 0  ){
+            score ++;
+            comboCount ++;
+            comboLoadingTime = COMBO_LOADING_TIME;
+            Combo* combo = new Combo(comboCount,zombie->x + 70,zombie->y - 15);
+            int tmpcomboCount = comboCount * 1.5;
+            if (tmpcomboCount >= 15) tmpcomboCount = 15;
+            combo->comboFont = loadFont("assets/Karma Suture.otf",20 + tmpcomboCount);
+            combos.push_back(combo);
+
             zombie->isDying = true;
             zombie->currentTexture = ZOMBIE_DIE_TEXT;
             zombie->currentFrame = 0;
@@ -472,6 +525,20 @@ void Game::play(){
             zombie->renderZombie(renderer);
             zombie->tick();
             if ( zombie->health == 1 && zombie->nightZombie) renderTexture(zombieHealthBar,zombie->x + 10,zombie->y - 10 ,renderer);
+        }
+	}
+	void Game::doCombo(){
+	    auto it = combos.begin();
+        while (it != combos.end()) {
+            auto temp = it++;
+            Combo* combo = *temp;
+            renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,color,combo->x ,combo->y,renderer);
+            combo->presentTime --;
+            if (combo->presentTime == 0){
+            TTF_CloseFont(combo->comboFont);
+            delete combo;
+            combos.erase(temp);
+            }
         }
 	}
     void Game::empty(std::list<Sprite*>& entities) {
@@ -493,10 +560,14 @@ void Game::play(){
     pause = false;
     rewriteTopScore(score);
     score = 0 ;
+    comboCount = 0;
+    prev_comboCount = 0;
+    score = 0 ;
     eraseFileData("score.txt");
 
     emptyZombie(zombies);
     empty(arrows);
+    empty(booms);
 
     zombieSpawnTime = 0;
     ARROW_LOADING_TIME = 3;

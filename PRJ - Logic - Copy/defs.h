@@ -21,6 +21,7 @@
 #define ZOMBIE_WALK "img\\zombie_walk.png"
 #define ZOMBIE_DIE "img\\zombie_die.png"
 #define ZOMBIE_HEALTHBAR "img\\zhealthbar.png"
+#define COMBO_LOADING_TIME 7
 
 #define ZOMBIE_DEFAULT "img\\zombie.png"
 
@@ -81,6 +82,17 @@ const int PAUSE_CLIPS[][4] = {
     {63,0,63,64}
 };
 const int PAUSE_FRAMES = sizeof(PAUSE_CLIPS)/sizeof(int)/4;
+
+const int BOOM_CLIPS[][4] = {
+    {0,0,148,180},
+    {148,0,148,180},
+    {297,0,148,180},
+    {445,0,148,180},
+    {594,0,148,180},
+    {742,0,148,180}
+};
+const int BOOM_FRAMES = sizeof(BOOM_CLIPS)/sizeof(int)/4;
+
 
 
 

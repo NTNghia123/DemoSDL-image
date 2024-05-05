@@ -4,6 +4,7 @@
 #include <list>
 #include <ctime>
 #include <algorithm>
+#include "score.h"
 #include "defs.h"
 #include "sprite_player.h"
 #include "background.h"
@@ -24,12 +25,15 @@ private:
     Sprite healthBar;
     Sprite pauseButton;
     std::list<Sprite*> arrows;
+    std::list<Sprite*> booms;
     std::list<Zombie*> zombies;
     Player player;
 
 
     Sprite SampleArrow;
     SDL_Texture* arrowTexture,* fireTexture,* blueTexture,* purpleTexture;
+    SDL_Texture* boomTexture, *boom1Frame;
+    int boom1FrameW, boom1FrameH;
     SDL_Texture* zombieDie, *zombieEnter,*zombieWalk,*zombieFreeze ,*zombieFreezing, *zombieDefault, *zombieHealthBar;
     int ARROW_LOADING_TIME;
     int canShootFrame;
@@ -48,9 +52,13 @@ private:
     bool pause;
     int mouseX, mouseY;
 
+    std::list <Combo*> combos;
+    int comboCount, prev_comboCount;
+    int comboLoadingTime;
     int score;
     int bestScore;
-    TTF_Font* fontScore, *fontText;
+    int bestScoreX, bestScoreY;
+    TTF_Font* fontScore, *fontText, *fontComboOkay, *fontComboGoody, *fontComboCrazy;
     SDL_Color color;
 
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
@@ -69,6 +77,9 @@ public:
     void doArrows();
     void spawnZombies();
     void doZombies();
+    void doBoom();
+    void doCombo();
+    void boomAtCollision(Zombie* zombie, Sprite* arrow);
     void empty(std::list<Sprite*>& entities);
     void emptyZombie(std::list<Zombie*>& entities);
     void reset();
