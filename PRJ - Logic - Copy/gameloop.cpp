@@ -51,6 +51,8 @@ void Game::initGame() {
     zombieDie = loadTexture(ZOMBIE_DIE,renderer);
     zombieEnter = loadTexture(ZOMBIE_ENTER,renderer);
     zombieWalk = loadTexture(ZOMBIE_WALK,renderer);
+    zombieFreeze = loadTexture("img\\freeze.png",renderer);
+    zombieFreezing = loadTexture("img\\freezing.png",renderer);
     zombieDefault = loadTexture(ZOMBIE_DEFAULT,renderer);
     zombieHealthBar = loadTexture(ZOMBIE_HEALTHBAR,renderer);
 
@@ -92,7 +94,6 @@ void Game::play(){
             presentScene(renderer);
         }
         else if (!pause){
-            //std::cerr << "!pause" << std::endl;
         get();
         updateEvent();
         prepareScene(renderer);
@@ -352,6 +353,10 @@ void Game::play(){
             case 1:
                 zombie->x += 50;
                 zombie->dx = -1;
+                if (zombie->health > 0){
+                    zombie->currentTexture = ZOMBIE_FREEZE_TEXT;
+                    zombie->currentFrame = 0;
+                }
                 break;
             case 2:
                 zombie->dx = -6;
@@ -418,6 +423,8 @@ void Game::play(){
             zombie->ZombieTexture.push_back(zombieEnter);
             zombie->ZombieTexture.push_back(zombieWalk);
             zombie->ZombieTexture.push_back(zombieDie);
+            zombie->ZombieTexture.push_back(zombieFreeze);
+            zombie->ZombieTexture.push_back(zombieFreezing);
 
             decideHard = 0;
             if ( score <= 20 ) decideHard = 2;
@@ -456,6 +463,10 @@ void Game::play(){
         }
             if ( zombie->currentTexture == ZOMBIE_ENTER_TEXT && zombie->currentFrame == 4 ){
                 zombie->currentTexture = ZOMBIE_WALK_TEXT;
+                zombie->currentFrame = 0;
+            }
+            if ( zombie->currentTexture == ZOMBIE_FREEZE_TEXT && zombie->currentFrame == 4 ){
+                zombie->currentTexture = ZOMBIE_FREEZING_TEXT;
                 zombie->currentFrame = 0;
             }
             zombie->renderZombie(renderer);

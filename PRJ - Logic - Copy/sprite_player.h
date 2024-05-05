@@ -68,7 +68,9 @@ class Player : public Sprite{
 enum {
     ZOMBIE_ENTER_TEXT,
     ZOMBIE_WALK_TEXT,
-    ZOMBIE_DIE_TEXT
+    ZOMBIE_DIE_TEXT,
+    ZOMBIE_FREEZE_TEXT,
+    ZOMBIE_FREEZING_TEXT
     };
 class Zombie : public Sprite{
     public:

@@ -522,7 +522,7 @@
 
 1714844519 d:\demosdl image\prj - logic - copy\defs.h
 
-1714846437 d:\demosdl image\prj - logic - copy\sprite_player.h
+1714899069 d:\demosdl image\prj - logic - copy\sprite_player.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -551,7 +551,7 @@
 	"background.h"
 	"gameloop.h"
 
-1714846056 d:\demosdl image\prj - logic - copy\gameloop.h
+1714898950 d:\demosdl image\prj - logic - copy\gameloop.h
 	<iostream>
 	<list>
 	<ctime>
@@ -576,7 +576,7 @@
 	"sprite_player.h"
 	"defs.h"
 
-1714845672 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
+1714846419 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 	"score.h"

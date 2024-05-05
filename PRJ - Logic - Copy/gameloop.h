@@ -30,7 +30,7 @@ private:
 
     Sprite SampleArrow;
     SDL_Texture* arrowTexture,* fireTexture,* blueTexture,* purpleTexture;
-    SDL_Texture* zombieDie, *zombieEnter,*zombieWalk, *zombieDefault, *zombieHealthBar;
+    SDL_Texture* zombieDie, *zombieEnter,*zombieWalk,*zombieFreeze ,*zombieFreezing, *zombieDefault, *zombieHealthBar;
     int ARROW_LOADING_TIME;
     int canShootFrame;
 
