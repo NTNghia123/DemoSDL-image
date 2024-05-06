@@ -59,7 +59,7 @@ private:
     int bestScore;
     int bestScoreX, bestScoreY;
     TTF_Font* fontScore, *fontText, *fontComboOkay, *fontComboGoody, *fontComboCrazy;
-    SDL_Color color;
+    SDL_Color colorRed, colorYellow, colorOrange, colorCandy;
 
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
     // ~Game();

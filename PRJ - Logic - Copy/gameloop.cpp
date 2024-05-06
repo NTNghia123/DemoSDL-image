@@ -14,10 +14,13 @@ void Game::initGame() {
 
 	fontScore = loadFont("assets/pixel.TTF", 80);
     fontText = loadFont("assets/Karma Suture.otf", 30);
-    fontComboOkay = loadFont("assets/shocktherapy-bb.italic.ttf", 40);
-    fontComboGoody = loadFont("assets/shocktherapy-bb.italic.ttf", 50);
-    fontComboCrazy = loadFont("assets/shocktherapy-bb.italic.ttf", 60);
-    color = {255,69,100,0};
+    fontComboOkay = loadFont("assets/shocktherapy-bb.italic.ttf", 50);
+    fontComboGoody = loadFont("assets/shocktherapy-bb.italic.ttf", 60);
+    fontComboCrazy = loadFont("assets/shocktherapy-bb.italic.ttf", 70);
+    colorRed = {255,69,100,0};
+    colorYellow = {255,244,0,0};
+    colorOrange = {249,166,2,0};
+    colorCandy = {227,36,43,0};
 
     //MenuTexture.texture = loadTexture("img\\menu.jpg",renderer);
     MenuTexture.texture = loadTexture("img\\noon.png",renderer);
@@ -128,6 +131,7 @@ void Game::play(){
                 reset();
                 SDL_Delay(1000 * 10/ FPS);
         }
+        if ( tower.currentFrame == 8) tower.currentFrame = 0;
         if ( comboLoadingTime > 0) comboLoadingTime --;
         player.moveee();
 
@@ -157,11 +161,11 @@ void Game::play(){
 
         writeGameScore(score);
         readBestscore(bestScore,score);
-        renderScore(score, fontScore,color,renderer);
-        renderText("High Score: " + std::to_string(bestScore),fontText,color,bestScoreX,bestScoreY,renderer);
-        if (comboCount > 0 && comboCount <= 3 ) renderText("OKAY",fontComboOkay,color,SCREEN_WIDTH - 20,100, renderer);
-        else if (comboCount > 3 && comboCount <= 6 ) renderText("GOOD",fontComboGoody,color,SCREEN_WIDTH - 20 ,100, renderer);
-        else if (comboCount > 6 ) renderText("CRAZY!!!",fontComboCrazy,color,SCREEN_WIDTH - 20,100, renderer);
+        renderScore(score, fontScore,colorRed,renderer);
+        renderText("High Score: " + std::to_string(bestScore),fontText,colorRed,bestScoreX,bestScoreY,renderer);
+        if (comboCount > 0 && comboCount <= 3 ) renderText("OKAY",fontComboOkay,colorRed,SCREEN_WIDTH - 20,100, renderer);
+        else if (comboCount > 3 && comboCount <= 6 ) renderText("GOOD",fontComboGoody,colorRed,SCREEN_WIDTH - 20 ,100, renderer);
+        else if (comboCount > 6 ) renderText("CRAZY!!!",fontComboCrazy,colorRed,SCREEN_WIDTH - 20,80, renderer);
 
         player.render(renderer);
         tower.render(-195,0,renderer);
@@ -451,7 +455,7 @@ void Game::play(){
             int decideHard = 0;
             if ( !night ){
                     if ( score <= 20 ) decideHard = 15;
-                    else if ( score <= 40) decideHard = 10;
+                    else if ( score <= 40) decideHard = 8;
                     else decideHard = rand() % 2 + 1;
                     zombie->dx =  -25 + ( rand() % decideHard);
                     zombie->health = 1;
@@ -489,7 +493,10 @@ void Game::play(){
             auto temp = it++;
             Zombie* zombie = *temp;
         if ( zombie->x < 205 ){
-            if ( player.health != 0 ) player.health --  ;
+            if ( player.health != 0 ) {
+                player.health --  ;
+                tower.currentFrame = 8;
+            }
             delete zombie;
             zombies.erase(temp);
             continue;
@@ -505,7 +512,7 @@ void Game::play(){
             comboLoadingTime = COMBO_LOADING_TIME;
             Combo* combo = new Combo(comboCount,zombie->x + 70,zombie->y - 15);
             int tmpcomboCount = comboCount * 1.5;
-            if (tmpcomboCount >= 15) tmpcomboCount = 15;
+            if (tmpcomboCount >= 12) tmpcomboCount = 12;
             combo->comboFont = loadFont("assets/Karma Suture.otf",20 + tmpcomboCount);
             combos.push_back(combo);
 
@@ -532,7 +539,12 @@ void Game::play(){
         while (it != combos.end()) {
             auto temp = it++;
             Combo* combo = *temp;
-            renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,color,combo->x ,combo->y,renderer);
+            if (combo->comboPoint <= 3)
+                renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,colorYellow,combo->x ,combo->y,renderer);
+            else if (combo->comboPoint <= 6)
+                renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,colorOrange,combo->x ,combo->y,renderer);
+            else
+                renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,colorCandy,combo->x ,combo->y,renderer);
             combo->presentTime --;
             if (combo->presentTime == 0){
             TTF_CloseFont(combo->comboFont);

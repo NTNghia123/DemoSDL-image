@@ -91,7 +91,7 @@ const int BOOM_CLIPS[][4] = {
     {594,0,148,180},
     {742,0,148,180}
 };
-const int BOOM_FRAMES = sizeof(BOOM_CLIPS)/sizeof(int)/4;
+const int BOOM_FRAMES = sizeof(BOOM_CLIPS)/sizeof(int)/4 ;
 
 
 
