@@ -86,7 +86,10 @@ void Game::initGame() {
 void Game::play(){
     bool quit = false;
     while( !quit ) {
-        if ( tower.currentFrame >= 1 ) FPS = 5;
+        if ( tower.currentFrame >= 1 && tower.currentFrame != 8 ) {
+            FPS = 5;
+            Mix_HaltMusic();
+        }
         else FPS = 10;
         int frameStart = SDL_GetTicks();
         switch (status) {
