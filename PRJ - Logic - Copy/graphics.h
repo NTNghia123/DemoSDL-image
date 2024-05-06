@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <string>
 #include <vector>
 #include <list>
@@ -26,4 +27,9 @@
     TTF_Font* loadFont(const char* path, int size);
     SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Renderer *renderer);
     SDL_Texture* renderText(std::string text, TTF_Font* font, SDL_Color textColor, int x, int y,SDL_Renderer *renderer);
+
+    Mix_Music *loadMusic(const char* path);
+    //void play(Mix_Music *gMusic);
+    Mix_Chunk* loadSound(const char* path);
+    //void play(Mix_Chunk* gChunk);
 

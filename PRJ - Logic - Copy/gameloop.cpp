@@ -11,6 +11,11 @@ void Game::initGame() {
 	window = initWin();
 	renderer = initRen(window);
 	createCustomCursor();
+	//dayMusic = loadMusic("assets\\day_music_real.mp3");
+	//nightMusic = loadMusic("assets\\night_music.mp3");
+	mainMusic = loadMusic("assets\\menuMus.mp3");
+	boomChunk = loadSound("assets\\boom.wav");
+	kingCombo = loadSound("assets\\king_1.wav");
 
 	fontScore = loadFont("assets/pixel.TTF", 80);
     fontText = loadFont("assets/Karma Suture.otf", 30);
@@ -70,11 +75,12 @@ void Game::initGame() {
     zombieDefault = loadTexture(ZOMBIE_DEFAULT,renderer);
     zombieHealthBar = loadTexture(ZOMBIE_HEALTHBAR,renderer);
 
-    status = 0;
+    status = MENU;
     score = 0;
     bestScore = 0;
     bestScoreX = SCREEN_WIDTH - 63 ;
     bestScoreY = 5;
+    play(mainMusic);
     reset();
 }
 void Game::play(){
@@ -120,12 +126,20 @@ void Game::play(){
                 bg.setTexture(SCROLLING_BG_day);
                 staticBG = STATIC_BG_day;
                 ARROW_LOADING_TIME = 3;
+                if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
+                mainMusic = loadMusic("assets\\day_music_real.mp3");
+                Mix_HaltMusic();
+                play(mainMusic);
             }
             else{
                 night = true;
                 bg.setTexture(SCROLLING_BG_night);
                 staticBG = STATIC_BG_night;
                 ARROW_LOADING_TIME = 2;
+                if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
+                mainMusic = loadMusic("assets\\night_music.mp3");
+                Mix_HaltMusic();
+                play(mainMusic);
             }
         }
 
@@ -165,9 +179,19 @@ void Game::play(){
         readBestscore(bestScore,score);
         renderScore(score, fontScore,colorRed,renderer);
         renderText("High Score: " + std::to_string(bestScore),fontText,colorRed,bestScoreX,bestScoreY,renderer);
-        if (comboCount > 0 && comboCount <= 3 ) renderText("OKAY",fontComboOkay,colorRed,SCREEN_WIDTH - 20,100, renderer);
-        else if (comboCount > 3 && comboCount <= 6 ) renderText("GOOD",fontComboGoody,colorRed,SCREEN_WIDTH - 20 ,100, renderer);
+        if (comboCount > 0 && comboCount <= 3 ) {
+            renderText("OKAY",fontComboOkay,colorRed,SCREEN_WIDTH - 20,100, renderer);
+            isKingCombo = true;
+        }
+        else if (comboCount > 3 && comboCount <= 6 ){
+            renderText("GOOD",fontComboGoody,colorRed,SCREEN_WIDTH - 20 ,100, renderer);
+            isKingCombo = true;
+        }
         else if (comboCount > 6 ){
+            if ( isKingCombo == true ) {
+                play(kingCombo);
+                isKingCombo = false;
+            }
             renderText("CRAZY!!!",fontComboCrazy,colorRed,SCREEN_WIDTH - 20,80, renderer);
             flame.render(SCREEN_WIDTH - flame.x + 5 ,25,renderer);
             flame.tick();
@@ -297,8 +321,11 @@ void Game::play(){
                     }
                     if (isInRect(replayButton)) reset();
                     if (isInRect(toMenuButton)){
-                        reset();
                         status = MENU;
+                        reset();
+                        mainMusic = loadMusic("assets\\menuMus.mp3");
+                        Mix_HaltMusic();
+                        play(mainMusic);
                     }
                     break;
                 default:
@@ -366,6 +393,7 @@ void Game::play(){
 	        && (std::max(y, arrow->y) < std::min(y + h, arrow->y + arrow->h));
 	}
 	void Game::boomAtCollision(Zombie* zombie, Sprite* arrow) {
+    play(boomChunk);
     Sprite* boom = new Sprite();
     booms.push_back(boom);
 
@@ -597,5 +625,12 @@ void Game::play(){
     player.health = 5;
     tower.currentFrame = 0;
     bg.scrollingOffset = 0;
+
+    if (status == PLAY_GAME){
+    if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
+    mainMusic = loadMusic("assets\\day_music_real.mp3");
+    Mix_HaltMusic();
+    play(mainMusic);
+    }
 	}
 

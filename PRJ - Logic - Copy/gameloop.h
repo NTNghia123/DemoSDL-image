@@ -61,6 +61,10 @@ private:
     TTF_Font* fontScore, *fontText, *fontComboOkay, *fontComboGoody, *fontComboCrazy;
     SDL_Color colorRed, colorYellow, colorOrange, colorCandy;
 
+    Mix_Music *mainMusic;
+    Mix_Chunk *boomChunk, *kingCombo;
+    bool isKingCombo;
+
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
     // ~Game();
 
@@ -83,6 +87,9 @@ public:
     void empty(std::list<Sprite*>& entities);
     void emptyZombie(std::list<Zombie*>& entities);
     void reset();
+
+    void play(Mix_Music *gMusic);
+    void play(Mix_Chunk* gChunk);
 
     bool checkCollides(Sprite* arrow);
     bool isInRect(const Sprite& sprite);
