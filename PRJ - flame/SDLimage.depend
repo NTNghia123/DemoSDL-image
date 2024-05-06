@@ -520,7 +520,7 @@
 	"sprite_player.h"
 	"background.h"
 
-1714971267 d:\demosdl image\prj - logic - copy\defs.h
+1714965429 d:\demosdl image\prj - logic - copy\defs.h
 
 1714967061 d:\demosdl image\prj - logic - copy\sprite_player.h
 	<iostream>
@@ -551,7 +551,7 @@
 	"background.h"
 	"gameloop.h"
 
-1714971267 d:\demosdl image\prj - logic - copy\gameloop.h
+1714967061 d:\demosdl image\prj - logic - copy\gameloop.h
 	<iostream>
 	<list>
 	<ctime>
@@ -580,8 +580,78 @@
 	"sprite_player.h"
 	"defs.h"
 
-1714971911 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
+1714968026 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 	"score.h"
+
+1714970060 source:d:\demosdl image\prj - flame\gameloop.cpp
+	"gameloop.h"
+	"graphics.h"
+	"score.h"
+
+1714970360 d:\demosdl image\prj - flame\gameloop.h
+	<iostream>
+	<list>
+	<ctime>
+	<algorithm>
+	"score.h"
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1714929738 d:\demosdl image\prj - flame\score.h
+	<fstream>
+	<iostream>
+	<vector>
+	<algorithm>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1714970360 d:\demosdl image\prj - flame\defs.h
+
+1714967061 d:\demosdl image\prj - flame\sprite_player.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	<algorithm>
+	"defs.h"
+	"graphics.h"
+
+1714967061 d:\demosdl image\prj - flame\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<string>
+	<vector>
+	<list>
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1713002480 d:\demosdl image\prj - flame\background.h
+	"defs.h"
+
+1714933166 source:d:\demosdl image\prj - flame\graphics.cpp
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+
+1714966987 source:d:\demosdl image\prj - flame\main.cpp
+	"defs.h"
+	"sprite_player.h"
+	"background.h"
+	"gameloop.h"
+
+1714967061 source:d:\demosdl image\prj - flame\player.cpp
+	"sprite_player.h"
+
+1714799913 source:d:\demosdl image\prj - flame\score.cpp
+	"score.h"
+
+1714967061 source:d:\demosdl image\prj - flame\sprite_player.cpp
+	"sprite_player.h"
+	"defs.h"
 

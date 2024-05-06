@@ -105,7 +105,5 @@ const int FLAME_CLIPS[][4] = {
 const int FLAME_FRAMES = sizeof(FLAME_CLIPS)/sizeof(int)/4;
 
 
-
-
 #endif
 

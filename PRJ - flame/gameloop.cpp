@@ -170,7 +170,6 @@ void Game::play(){
         else if (comboCount > 6 ){
             renderText("CRAZY!!!",fontComboCrazy,colorRed,SCREEN_WIDTH - 20,80, renderer);
             flame.render(SCREEN_WIDTH - flame.x + 5 ,25,renderer);
-            flame.tick();
         }
 
         player.render(renderer);
@@ -511,11 +510,11 @@ void Game::play(){
         }
         else if ( zombie->health == 0  ){
             score ++;
-            comboCount ++;
+            comboCount += 3  ;
             comboLoadingTime = COMBO_LOADING_TIME;
             Combo* combo = new Combo(comboCount,zombie->x + 70,zombie->y - 15);
             if (comboCount > 3 && comboCount <= 6 ) combo->x = zombie->x + 85, combo->y = zombie->y - 20;
-            else if (comboCount > 6 ) combo->x = zombie->x + 220, combo->y = zombie->y - 22;
+            else if (comboCount > 6 ) combo->x = zombie->x + 220, combo->y = zombie->y - 25;
             int tmpcomboCount = comboCount * 1.5;
             if (tmpcomboCount >= 12) tmpcomboCount = 12;
             combo->comboFont = loadFont("assets/Karma Suture.otf",20 + tmpcomboCount);
@@ -550,6 +549,7 @@ void Game::play(){
                 renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,colorOrange,combo->x ,combo->y,renderer);
             else{
                 renderText("Combo x" + std::to_string(combo->comboPoint),combo->comboFont,colorCandy,combo->x - 46 - 70  ,combo->y,renderer);
+                flame.tick();
             }
             combo->presentTime --;
             if (combo->presentTime == 0){
