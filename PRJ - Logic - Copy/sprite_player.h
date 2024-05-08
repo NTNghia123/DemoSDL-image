@@ -10,6 +10,7 @@
 
 #define INITIAL_SPEED 69
 #define ARROW_SPEED 75
+#define ULTI_SPEED 120
 #define ZOMBIE_SPEED 6
 class Sprite {
     public:
@@ -18,6 +19,7 @@ class Sprite {
     int currentFrame = 0;
     int randomTexture = 0;
     int penetrate;
+    bool isUlti = false;
 
     int health;
     int x;

@@ -28,10 +28,12 @@ private:
     std::list<Sprite*> booms;
     std::list<Zombie*> zombies;
     Player player;
-
+    SDL_Texture* emptyManaBar, *maxManaBar;
+    double manaPercent;
+    int upmanaPercent;
 
     Sprite SampleArrow;
-    SDL_Texture* arrowTexture,* fireTexture,* blueTexture,* purpleTexture;
+    SDL_Texture* arrowTexture,* fireTexture,* blueTexture,* purpleTexture, *ultiTexture;
     SDL_Texture* boomTexture, *boom1Frame;
     int boom1FrameW, boom1FrameH;
     SDL_Texture* zombieDie, *zombieEnter,*zombieWalk,*zombieFreeze ,*zombieFreezing, *zombieDefault, *zombieHealthBar;
@@ -62,7 +64,7 @@ private:
     SDL_Color colorRed, colorYellow, colorOrange, colorCandy;
 
     Mix_Music *mainMusic;
-    Mix_Chunk *boomChunk, *kingCombo;
+    Mix_Chunk *boomChunk, *kingCombo, *ultiSound;
     bool isKingCombo;
 
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
@@ -78,6 +80,7 @@ public:
     void updateEventIfPause();
     void GameshootDayArrow();
     void GameshootNightArrow();
+    void GameshootUlti();
     void doArrows();
     void spawnZombies();
     void doZombies();

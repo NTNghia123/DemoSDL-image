@@ -16,6 +16,7 @@ void Game::initGame() {
 	mainMusic = loadMusic("assets\\menuMus.mp3");
 	boomChunk = loadSound("assets\\boom.wav");
 	kingCombo = loadSound("assets\\king_1.wav");
+	ultiSound = loadSound("assets\\beam.wav");
 
 	fontScore = loadFont("assets/pixel.TTF", 80);
     fontText = loadFont("assets/Karma Suture.otf", 30);
@@ -38,6 +39,8 @@ void Game::initGame() {
 
 	tower.initClip(loadTexture(TOWER_FILE,renderer), TOWER_FRAMES, TOWER_CLIPS);
 	healthBar.initClip(loadTexture(HEALTH_BAR,renderer), HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
+	emptyManaBar = loadTexture("img\\empty_health.png",renderer);
+	maxManaBar = loadTexture("img\\health.png",renderer);
 	flame.initClip(loadTexture("img\\flame.png",renderer), FLAME_FRAMES, FLAME_CLIPS);
 	flame.x = 46;
 	flame.y = 130;
@@ -61,6 +64,7 @@ void Game::initGame() {
     fireTexture = loadTexture("img\\fire.png",renderer);
     blueTexture = loadTexture("img\\blue.png",renderer);
     purpleTexture = loadTexture("img\\purple.png",renderer);
+    ultiTexture = loadTexture("img\\R.png",renderer);
     ARROW_LOADING_TIME = 3;
 
     boomTexture = loadTexture("img\\boom.png",renderer);
@@ -173,6 +177,19 @@ void Game::play(){
 
         healthBar.currentFrame = player.health ;
         healthBar.render(-13,0,renderer);
+        renderTexture(emptyManaBar,40,68,renderer);
+
+        int ww = 140 * manaPercent / 100;
+        int hh = 16;
+        SDL_Rect rect = { 45, 75, ww, hh };
+        SDL_SetRenderDrawColor(renderer, 0, 71, 171, 0);
+        SDL_RenderFillRect(renderer, &rect);
+        if (manaPercent != 100 && upmanaPercent == 2){
+            manaPercent += 1;
+            upmanaPercent = 0;
+            //std::cerr << manaPercent << std::endl;
+        }
+        if (upmanaPercent != 2) upmanaPercent++;
 
         if ( healthBar.currentFrame == 0){
             tower.tick();
@@ -352,6 +369,13 @@ void Game::play(){
             if (!pause) pause = true;
             pauseButton.tick();
         }
+        if (keyboard[SDL_SCANCODE_SPACE] && manaPercent == 100 ) {
+            manaPercent = 0;
+            upmanaPercent = 0;
+            GameshootUlti();
+            player.shootArrow();
+            canShootFrame = ARROW_LOADING_TIME - 2;
+        }
     }
     void Game::GameshootDayArrow()
     {
@@ -365,6 +389,20 @@ void Game::play(){
         arrow->dx = ARROW_SPEED;
         arrow->texture = arrowTexture;
         SDL_QueryTexture(arrowTexture, NULL, NULL, &arrow->w, &arrow->h);
+    }
+    void Game::GameshootUlti()
+    {
+        Sprite *arrow = new Sprite();
+        arrows.push_back(arrow);
+
+        arrow->isUlti = true;
+        arrow->x = player.x;
+        arrow->y = player.y - 60;
+        arrow->x += player.w;
+        arrow->y += (player.h / 2) - (arrow->h / 2) - 10;
+        arrow->dx = 0;
+        arrow->texture = ultiTexture;
+        SDL_QueryTexture(ultiTexture, NULL, NULL, &arrow->w, &arrow->h);
     }
     void Game::GameshootNightArrow()
     {
@@ -422,7 +460,11 @@ void Game::play(){
     bool Game::checkCollides(Sprite * arrow)
     {
         for (Zombie* zombie: zombies) {
-            if (zombie->isCollides(arrow)) {
+            if (arrow->isUlti == true && zombie->isCollides(arrow)) {
+                boomAtCollision(zombie,arrow);
+                if (zombie->health > 0) zombie->health = 0;
+            }
+            else if (zombie->isCollides(arrow)) {
             if (zombie->nightZombie == false){
                 if (zombie->health > 0) zombie->health = 0;
             }
@@ -460,16 +502,30 @@ void Game::play(){
         for (Sprite* a: arrows)
         renderTexture(a->texture, a->x, a->y,renderer);
 
+
+        Sprite* deleteUlti = nullptr;
         auto it = arrows.begin();
         while (it != arrows.end()) {
             auto temp = it++;
             Sprite* a = *temp;
-            if ( a->x > SCREEN_WIDTH || checkCollides(a) ) {
+            if ( a->isUlti == true) deleteUlti = a;
+            if ( a->x > SCREEN_WIDTH || checkCollides(a)) {
                 delete a;
                 arrows.erase(temp);
             }
+
             a->movee();
         }
+
+        if (deleteUlti != nullptr) {
+            play(ultiSound);
+            auto itt = std::find(arrows.begin(), arrows.end(), deleteUlti);
+            if (itt != arrows.end()) {
+            delete *itt;
+            arrows.erase(itt);
+            }
+        }
+
         auto ptr = zombies.begin();
         while (ptr != zombies.end()) {
             auto temp = ptr++;
@@ -618,6 +674,8 @@ void Game::play(){
     empty(arrows);
     empty(booms);
 
+    manaPercent = 100;
+    upmanaPercent = 0;
     zombieSpawnTime = 0;
     ARROW_LOADING_TIME = 3;
     canShootFrame = ARROW_LOADING_TIME;
