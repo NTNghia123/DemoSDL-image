@@ -515,16 +515,16 @@
 	"sprite_player.h"
 	"defs.h"
 
-1715013382 source:d:\demosdl image\prj - logic - copy\graphics.cpp
+1715269782 source:d:\demosdl image\prj - logic - copy\graphics.cpp
 	"defs.h"
 	"graphics.h"
 	"gameloop.h"
 	"sprite_player.h"
 	"background.h"
 
-1714971267 d:\demosdl image\prj - logic - copy\defs.h
+1715145098 d:\demosdl image\prj - logic - copy\defs.h
 
-1715101432 d:\demosdl image\prj - logic - copy\sprite_player.h
+1715252023 d:\demosdl image\prj - logic - copy\sprite_player.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -533,7 +533,7 @@
 	"defs.h"
 	"graphics.h"
 
-1715007972 d:\demosdl image\prj - logic - copy\graphics.h
+1715269817 d:\demosdl image\prj - logic - copy\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -554,7 +554,7 @@
 	"background.h"
 	"gameloop.h"
 
-1715106156 d:\demosdl image\prj - logic - copy\gameloop.h
+1715275700 d:\demosdl image\prj - logic - copy\gameloop.h
 	<iostream>
 	<list>
 	<ctime>
@@ -567,10 +567,11 @@
 1714967061 source:d:\demosdl image\prj - logic - copy\player.cpp
 	"sprite_player.h"
 
-1714799913 source:d:\demosdl image\prj - logic - copy\score.cpp
+1715271374 source:d:\demosdl image\prj - logic - copy\score.cpp
 	"score.h"
+	"defs.h"
 
-1714929738 d:\demosdl image\prj - logic - copy\score.h
+1715145270 d:\demosdl image\prj - logic - copy\score.h
 	<fstream>
 	<iostream>
 	<vector>
@@ -579,11 +580,11 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 
-1714967061 source:d:\demosdl image\prj - logic - copy\sprite_player.cpp
+1715252023 source:d:\demosdl image\prj - logic - copy\sprite_player.cpp
 	"sprite_player.h"
 	"defs.h"
 
-1715107640 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
+1715275779 source:d:\demosdl image\prj - logic - copy\gameloop.cpp
 	"gameloop.h"
 	"graphics.h"
 	"score.h"

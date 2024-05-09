@@ -8,7 +8,7 @@
 #include <SDL_ttf.h>
 void writeGameScore(const int score);
 void eraseFileData(const char * path);
-void rewriteTopScore(const int score);
+void rewriteTopScore(const int score, int *scores);
 void readBestscore(int & bestScore, const int score);
 
 struct Combo{

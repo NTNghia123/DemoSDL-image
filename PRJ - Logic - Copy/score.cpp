@@ -1,5 +1,5 @@
 #include "score.h"
-
+#include "defs.h"
 void writeGameScore(const int score){
     std::ofstream file("score.txt");
     if ( file.is_open()){
@@ -16,28 +16,24 @@ void eraseFileData(const char * path){
     file.close();
     return;
 }
-void rewriteTopScore(const int score) {
+
+void rewriteTopScore(const int score, int *scores) {
     std::ifstream input("top_score.txt");
-    int scores[6] = {0, 0, 0, 0, 0, 0}; // nhung chi lay 5 thoi
     int number;
     int index = 0;
+    int scoresTMP[MAX_SCORES + 1];
     if (input.is_open()) {
-        std::string line;
-        if (getline(input, line)) {
-                number = std::stoi(line);
-                scores[index] = number;
-                index++;
-        }
+        while (input >> number && index < MAX_SCORES) scoresTMP[index++] = number;
     }
-    scores[5] = score;
-    int len = sizeof(scores) / sizeof(scores[0]);
-    std::sort(scores, scores + len, std::greater<int>());
     input.close();
+    scoresTMP[MAX_SCORES ] = score;
+    std::sort(scoresTMP, scoresTMP + MAX_SCORES + 1, std::greater<int>());
 
     std::ofstream output("top_score.txt");
     index = 0;
-    while (index < 5) {
-        output << scores[index] << std::endl;
+    while (index < MAX_SCORES) {
+        output << scoresTMP[index] << std::endl;
+        scores[index] = scoresTMP[index];
         index++;
     }
     output.close();

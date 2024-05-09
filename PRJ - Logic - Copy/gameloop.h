@@ -12,7 +12,9 @@ enum MenuOption {
     PLAY_GAME,
     HIGH_SCORES,
     OPTIONS,
-    QUIT
+    QUIT,
+
+    DIE
 };
 class Game {
 private:
@@ -50,7 +52,10 @@ private:
     int stageResetTimer;
     int FPS = 10;
 
-    Sprite MenuTexture, pauseMenuTexture, replayButton, toMenuButton, resumeButton;
+    Sprite MenuTexture, startButton, highscoreButton, helpButton, quitButton, backButton;
+    Sprite yesButton, noButton;
+    SDL_Texture* quitMenu, *highscoreMenu, *dieMenu;
+    Sprite pauseMenuTexture, replayButton, toMenuButton, resumeButton;
     bool pause;
     int mouseX, mouseY;
 
@@ -58,13 +63,15 @@ private:
     int comboCount, prev_comboCount;
     int comboLoadingTime;
     int score;
+    int scores[MAX_SCORES];
     int bestScore;
     int bestScoreX, bestScoreY;
+    TTF_Font* fontHighScore;
     TTF_Font* fontScore, *fontText, *fontComboOkay, *fontComboGoody, *fontComboCrazy;
     SDL_Color colorRed, colorYellow, colorOrange, colorCandy;
 
     Mix_Music *mainMusic;
-    Mix_Chunk *boomChunk, *kingCombo, *ultiSound;
+    Mix_Chunk *boomChunk, *kingCombo, *ultiSound, *clickSound, *explodeSound;
     bool isKingCombo;
 
     int keyboard[MAX_KEYBOARD_KEYS] = {0};
@@ -77,6 +84,9 @@ public:
     void getMenu();
     void updateEvent();
     void getIfPause();
+    void getIfDie();
+    void getIfHighScores();
+    void getIfQuit();
     void updateEventIfPause();
     void GameshootDayArrow();
     void GameshootNightArrow();

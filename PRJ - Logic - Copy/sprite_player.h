@@ -42,6 +42,7 @@ class Sprite {
     void turnDown();
     void updateToado(int keyboard[]);
     void render(int x, int y, SDL_Renderer *renderer);
+    void getPos(int _x, int _y);
 
     bool isCollides(Sprite* arrow);
 
@@ -82,5 +83,4 @@ class Zombie : public Sprite{
 
     void renderZombie(SDL_Renderer *renderer);
 };
-
 

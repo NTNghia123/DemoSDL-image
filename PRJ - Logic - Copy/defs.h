@@ -35,7 +35,7 @@ const int SCREEN_HEIGHT = 500;
 const int MAX_KEYBOARD_KEYS = 350;
 const int INIT_X = 130;
 const int INIT_Y = 165;
-
+const int MAX_SCORES = 5;
 
 const int TOWER_CLIPS[][4] ={
     {1476,663,492,663},

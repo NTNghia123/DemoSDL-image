@@ -130,7 +130,7 @@
         renderTexture(background.texture, background.scrollingOffset - background.width, 0,renderer);
     }
 
-TTF_Font* loadFont(const char* path, int size)
+    TTF_Font* loadFont(const char* path, int size)
     {
         TTF_Font* gFont = TTF_OpenFont( path, size );
         if (gFont == nullptr) {
@@ -140,8 +140,7 @@ TTF_Font* loadFont(const char* path, int size)
         }
         return gFont;
     }
-SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Renderer *renderer) {
-    // Chuyển đổi số nguyên thành chuỗi
+    SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,int y,SDL_Renderer *renderer) {
     std::string text = std::to_string(number);
 
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
@@ -163,7 +162,6 @@ SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Ren
     int textHeight = textSurface->h;
 
     int x = (SCREEN_WIDTH - textWidth) / 2;
-    int y = 80;
 
     SDL_Rect renderQuad = {x, y, textWidth, textHeight};
     SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
@@ -221,6 +219,7 @@ SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Ren
             SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR,
                        "Could not load sound! SDL_mixer Error: %s", Mix_GetError());
         }
+        return gChunk;
     }
     void Game::play(Mix_Chunk* gChunk) {
         if (gChunk != nullptr) {

@@ -11,13 +11,14 @@ void Game::initGame() {
 	window = initWin();
 	renderer = initRen(window);
 	createCustomCursor();
-	//dayMusic = loadMusic("assets\\day_music_real.mp3");
-	//nightMusic = loadMusic("assets\\night_music.mp3");
 	mainMusic = loadMusic("assets\\menuMus.mp3");
 	boomChunk = loadSound("assets\\boom.wav");
 	kingCombo = loadSound("assets\\king_1.wav");
 	ultiSound = loadSound("assets\\beam.wav");
+	explodeSound = loadSound("assets\\explode.wav");
+	clickSound = loadSound("assets\\click_sound.wav");
 
+	fontHighScore = loadFont("assets/pixel.TTF", 50);
 	fontScore = loadFont("assets/pixel.TTF", 80);
     fontText = loadFont("assets/Karma Suture.otf", 30);
     fontComboOkay = loadFont("assets/shocktherapy-bb.italic.ttf", 50);
@@ -28,22 +29,51 @@ void Game::initGame() {
     colorOrange = {249,166,2,0};
     colorCandy = {227,36,43,0};
 
-    MenuTexture.texture = loadTexture("img\\noon.png",renderer);
+    MenuTexture.texture = loadTexture("img\\menu.png",renderer);
+    startButton.texture = loadTexture("img\\yes_no.png",renderer);
+    highscoreButton.texture = loadTexture("img\\yes_no.png",renderer);
+    helpButton.texture = loadTexture("img\\yes_no.png",renderer);
+    quitButton.texture = loadTexture("img\\yes_no.png",renderer);
+    SDL_QueryTexture(startButton.texture, NULL, NULL, &startButton.w, &startButton.h);
+    SDL_QueryTexture(highscoreButton.texture, NULL, NULL, &highscoreButton.w, &highscoreButton.h);
+    SDL_QueryTexture(helpButton.texture, NULL, NULL, &helpButton.w, &helpButton.h);
+    SDL_QueryTexture(quitButton.texture, NULL, NULL, &quitButton.w, &quitButton.h);
+    startButton.getPos(300,207);
+    highscoreButton.getPos(300,272);
+    helpButton.getPos(300,340);
+    quitButton.getPos(300,405);
+
+    dieMenu= loadTexture("img\\die_menu.png",renderer);
+    quitMenu = loadTexture("img\\quit_menu.png",renderer);
+    yesButton.texture = loadTexture("img\\yes_no.png",renderer);
+    noButton.texture = loadTexture("img\\yes_no.png",renderer);
+    backButton.texture = loadTexture("img\\back_button.png",renderer);
+    SDL_QueryTexture(yesButton.texture, NULL, NULL, &yesButton.w, &yesButton.h);
+    SDL_QueryTexture(noButton.texture, NULL, NULL, &noButton.w, &noButton.h);
+    SDL_QueryTexture(backButton.texture, NULL, NULL, &backButton.w, &backButton.h);
+    yesButton.getPos(163,292);
+    noButton.getPos(470,292);
+    backButton.getPos(0,0);
+
+    highscoreMenu = loadTexture("img\\high_score.png",renderer);
+
     pauseMenuTexture.texture = loadTexture("img\\pause_menu.png",renderer);
     replayButton.texture = loadTexture("img\\square.png",renderer);
     toMenuButton.texture = loadTexture("img\\square.png",renderer);
     resumeButton.texture = loadTexture("img\\resumeButton.png",renderer);
     SDL_QueryTexture(replayButton.texture, NULL, NULL, &replayButton.w, &replayButton.h);
-    SDL_QueryTexture(replayButton.texture, NULL, NULL, &toMenuButton.w, &toMenuButton.h);
+    SDL_QueryTexture(toMenuButton.texture, NULL, NULL, &toMenuButton.w, &toMenuButton.h);
     SDL_QueryTexture(resumeButton.texture, NULL, NULL, &resumeButton.w, &resumeButton.h);
+    resumeButton.getPos(263,311);
+    replayButton.getPos(257,218);
+    toMenuButton.getPos(362,218);
 
 	tower.initClip(loadTexture(TOWER_FILE,renderer), TOWER_FRAMES, TOWER_CLIPS);
 	healthBar.initClip(loadTexture(HEALTH_BAR,renderer), HEALTH_BAR_FRAMES, HEALTH_BAR_CLIPS);
 	emptyManaBar = loadTexture("img\\empty_health.png",renderer);
 	maxManaBar = loadTexture("img\\health.png",renderer);
 	flame.initClip(loadTexture("img\\flame.png",renderer), FLAME_FRAMES, FLAME_CLIPS);
-	flame.x = 46;
-	flame.y = 130;
+	flame.getPos(46,130);
 	pauseButton.initClip(loadTexture("img\\pause_frame.png",renderer), PAUSE_FRAMES, PAUSE_CLIPS);
 	SDL_QueryTexture(loadTexture("img\\pause_1frame.png",renderer), NULL, NULL, &pauseButton.w, &pauseButton.h);
 
@@ -90,8 +120,11 @@ void Game::initGame() {
 void Game::play(){
     bool quit = false;
     while( !quit ) {
+        if ( tower.currentFrame == 1 ) {
+            play(explodeSound);
+        }
         if ( tower.currentFrame >= 1 && tower.currentFrame != 8 ) {
-            FPS = 5;
+            FPS = 2;
             Mix_HaltMusic();
         }
         else FPS = 10;
@@ -101,6 +134,10 @@ void Game::play(){
         prepareScene(renderer);
         getMenu();
         renderTexture(MenuTexture.texture,0,0,renderer);
+        renderTexture(startButton.texture,startButton.x,startButton.y,renderer);
+        renderTexture(highscoreButton.texture,highscoreButton.x,highscoreButton.y,renderer);
+        renderTexture(helpButton.texture,helpButton.x,helpButton.y,renderer);
+        renderTexture(quitButton.texture,quitButton.x,quitButton.y,renderer);
         presentScene(renderer);
         break;
         case PLAY_GAME:
@@ -110,16 +147,10 @@ void Game::play(){
             updateEventIfPause();
             pauseButton.render(SCREEN_WIDTH - 63,0,renderer);
             renderTextureCenter(pauseMenuTexture.texture,renderer);
-            renderTexture(replayButton.texture,257,218,renderer);
-            replayButton.x = 257;
-            replayButton.y = 218;
-            renderTexture(toMenuButton.texture,362,218,renderer);
-            toMenuButton.x = 362;
-            toMenuButton.y = 218;
+            renderTexture(replayButton.texture,replayButton.x,replayButton.y,renderer);
+            renderTexture(toMenuButton.texture,toMenuButton.x,toMenuButton.y,renderer);
             //renderTexture(pausedButton.texture,460,218,renderer);
-            renderTexture(resumeButton.texture,263,311,renderer);
-            resumeButton.x = 263;
-            resumeButton.y = 311;
+            renderTexture(resumeButton.texture,resumeButton.x,resumeButton.y,renderer);
             presentScene(renderer);
         }
         else if (!pause){
@@ -151,8 +182,9 @@ void Game::play(){
         }
 
         if (player.health == 0  && tower.currentFrame == 7 ){
+                status = DIE;
                 reset();
-                SDL_Delay(1000 * 10/ FPS);
+                SDL_Delay(100 * 10/ FPS);
         }
         if ( tower.currentFrame == 8) tower.currentFrame = 0;
         if ( comboLoadingTime > 0) comboLoadingTime --;
@@ -182,12 +214,11 @@ void Game::play(){
         int ww = 140 * manaPercent / 100;
         int hh = 16;
         SDL_Rect rect = { 45, 75, ww, hh };
-        SDL_SetRenderDrawColor(renderer, 0, 71, 171, 0);
+        SDL_SetRenderDrawColor(renderer, 0, 71, 171, 0); // xanh cobalt
         SDL_RenderFillRect(renderer, &rect);
         if (manaPercent != 100 && upmanaPercent == 2){
             manaPercent += 1;
             upmanaPercent = 0;
-            //std::cerr << manaPercent << std::endl;
         }
         if (upmanaPercent != 2) upmanaPercent++;
 
@@ -197,7 +228,7 @@ void Game::play(){
 
         writeGameScore(score);
         readBestscore(bestScore,score);
-        renderScore(score, fontScore,colorRed,renderer);
+        renderScore(score, fontScore,colorRed,80,renderer);
         renderText("High Score: " + std::to_string(bestScore),fontText,colorRed,bestScoreX,bestScoreY,renderer);
         if (comboCount > 0 && comboCount <= 3 ) {
             renderText("OKAY",fontComboOkay,colorRed,SCREEN_WIDTH - 20,100, renderer);
@@ -216,16 +247,42 @@ void Game::play(){
             flame.render(SCREEN_WIDTH - flame.x + 5 ,25,renderer);
             flame.tick();
         }
+        if ( comboLoadingTime == 0 && comboCount == prev_comboCount) comboCount = 0;
+        prev_comboCount = comboCount;
 
         player.render(renderer);
-        tower.render(-195,0,renderer);
+        tower.render(-195,26,renderer);
         pauseButton.render(SCREEN_WIDTH - 63,0,renderer);
 
         presentScene(renderer);
 
-        if ( comboLoadingTime == 0 && comboCount == prev_comboCount) comboCount = 0;
-        prev_comboCount = comboCount;
         }
+        break;
+        case DIE:
+        prepareScene(renderer);
+        renderTexture(dieMenu,0,0,renderer);
+        getIfDie();
+        presentScene(renderer);
+        break;
+        case HIGH_SCORES:
+            prepareScene(renderer);
+            renderTexture(highscoreMenu,0,0,renderer);
+            renderTexture(backButton.texture,0,0,renderer);
+            renderScore(scores[0],fontHighScore,colorRed,133, renderer);
+            renderScore(scores[1],fontHighScore,colorRed,202, renderer);
+            renderScore(scores[2],fontHighScore,colorRed,269, renderer);
+            renderScore(scores[3],fontHighScore,colorRed,336, renderer);
+            renderScore(scores[4],fontHighScore,colorRed,403, renderer);
+            getIfHighScores();
+            presentScene(renderer);
+        break;
+        case QUIT:
+        prepareScene(renderer);
+        renderTexture(quitMenu,0,0,renderer);
+        renderTexture(yesButton.texture,yesButton.x,yesButton.y,renderer);
+        renderTexture(noButton.texture,noButton.x,noButton.y,renderer);
+        getIfQuit();
+        presentScene(renderer);
         break;
         }
 
@@ -295,9 +352,88 @@ void Game::play(){
                     exit(0);
                     break;
                 case SDL_MOUSEBUTTONDOWN:
+                    SDL_GetMouseState(&mouseX,&mouseY);
+                    if (isInRect(startButton)){
+                    play(clickSound);
                     status = PLAY_GAME;
                     reset();
+                    }else if (isInRect(highscoreButton)){
+                    play(clickSound);
+                    status = HIGH_SCORES;
+                    }
+                    else if (isInRect(quitButton)){
+                    play(clickSound);
+                    status = QUIT;
+                    }
                     break;
+                default:
+                    break;
+            }
+        }
+    }
+    void Game::getIfHighScores() {
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    exit(0);
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    SDL_GetMouseState(&mouseX,&mouseY);
+                    if (isInRect(backButton)){
+                    play(clickSound);
+                    status = MENU;
+                    }
+                default:
+                    break;
+            }
+        }
+    }
+    void Game::getIfQuit() {
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    exit(0);
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    SDL_GetMouseState(&mouseX,&mouseY);
+                    if (isInRect(yesButton)){
+                    play(clickSound);
+                    exit(0);
+                    }else if (isInRect(noButton)){
+                    play(clickSound);
+                    status = MENU;
+                    }
+                default:
+                    break;
+            }
+        }
+    }
+    void Game::getIfDie(){
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+                case SDL_QUIT:
+                    exit(0);
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    SDL_GetMouseState(&mouseX,&mouseY);
+                    if (isInRect(yesButton)){
+                    play(clickSound);
+                    status = PLAY_GAME;
+                    reset();
+                    }else if (isInRect(noButton)){
+                    play(clickSound);
+                    status = MENU;
+                    reset();
+                    }
                 default:
                     break;
             }
@@ -332,15 +468,21 @@ void Game::play(){
                 case SDL_MOUSEBUTTONDOWN:
                     SDL_GetMouseState(&mouseX,&mouseY);
                     if (mouseX >= SCREEN_WIDTH - pauseButton.w && mouseY <= pauseButton.h ){
+                        play(clickSound);
                         if (pause) pause = false;
                         pauseButton.tick();
                     }
                     if (isInRect(resumeButton)) {
+                        play(clickSound);
                         pause = false;
                         pauseButton.tick();
                     }
-                    if (isInRect(replayButton)) reset();
+                    if (isInRect(replayButton)){
+                    play(clickSound);
+                    reset();
+                    }
                     if (isInRect(toMenuButton)){
+                        play(clickSound);
                         status = MENU;
                         reset();
                         mainMusic = loadMusic("assets\\menuMus.mp3");
@@ -547,14 +689,14 @@ void Game::play(){
                     if ( score <= 20 ) decideHard = 15;
                     else if ( score <= 40) decideHard = 8;
                     else decideHard = rand() % 2 + 1;
-                    zombie->dx =  -25 + ( rand() % decideHard);
+                    zombie->dx =  -20 + ( rand() % decideHard);
                     zombie->health = 1;
                     zombie->nightZombie = false;
             }else{
                     if ( score <= 20 ) decideHard = 15;
                     else if ( score <= 40) decideHard = 10;
                     else decideHard = 3 - rand() % 3;
-                    zombie->dx =  -20 + ( rand() % decideHard);
+                    zombie->dx =  -25 + ( rand() % decideHard);
                     zombie->health = 2;
                     zombie->nightZombie = true;
             }
@@ -568,8 +710,10 @@ void Game::play(){
             decideHard = 0;
             if ( score <= 20 ) decideHard = 2;
             else if ( score <= 40) decideHard = 3;
-            else decideHard = 6 + rand() % 3;
-            zombieSpawnTime = 8 - (rand() % decideHard );
+            else if (night) decideHard = 4 + rand() % 3;
+            else decideHard = 6 + rand() % 2;
+            if (night) zombieSpawnTime = 7 - (rand() % decideHard );
+            else zombieSpawnTime = 8 - (rand() % decideHard );
 
             zombie->initClip(zombieEnter,ZOMBIE_FRAMES,ZOMBIE_CLIPS);
             SDL_QueryTexture(zombieDefault, NULL, NULL, &zombie->w, &zombie->h);
@@ -663,7 +807,7 @@ void Game::play(){
     void Game::reset()
     {
     pause = false;
-    rewriteTopScore(score);
+    rewriteTopScore(score, scores);
     score = 0 ;
     comboCount = 0;
     prev_comboCount = 0;
@@ -673,6 +817,7 @@ void Game::play(){
     emptyZombie(zombies);
     empty(arrows);
     empty(booms);
+    pauseButton.currentFrame = 0;
 
     manaPercent = 100;
     upmanaPercent = 0;
@@ -690,6 +835,16 @@ void Game::play(){
     if (status == PLAY_GAME){
     if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
     mainMusic = loadMusic("assets\\day_music_real.mp3");
+    Mix_HaltMusic();
+    play(mainMusic);
+    }else if (status == MENU){
+    if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
+    mainMusic = loadMusic("assets\\menuMus.mp3");
+    Mix_HaltMusic();
+    play(mainMusic);
+    }else if (status == DIE){
+    if (mainMusic != nullptr) Mix_FreeMusic(mainMusic);
+    mainMusic = loadMusic("assets\\die_music.mp3");
     Mix_HaltMusic();
     play(mainMusic);
     }

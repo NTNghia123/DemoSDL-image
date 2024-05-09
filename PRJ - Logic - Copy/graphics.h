@@ -25,7 +25,7 @@
     void quitLoop(SDL_Renderer *renderer, SDL_Window *window);
     void waitUntilKeyPressed();
     TTF_Font* loadFont(const char* path, int size);
-    SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor,SDL_Renderer *renderer);
+    SDL_Texture* renderScore(int number, TTF_Font* font, SDL_Color textColor, int y,SDL_Renderer *renderer);
     SDL_Texture* renderText(std::string text, TTF_Font* font, SDL_Color textColor, int x, int y,SDL_Renderer *renderer);
 
     Mix_Music *loadMusic(const char* path);

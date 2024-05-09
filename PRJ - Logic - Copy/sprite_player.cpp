@@ -51,4 +51,8 @@ void Sprite::updateToado(int keyboard[])
         SDL_Rect renderQuad = {x, y, clip->w, clip->h};
         SDL_RenderCopy(renderer, texture, clip, &renderQuad);
     }
+    void Sprite::getPos(int _x, int _y){
+        x = _x;
+        y = _y;
+    }
 
