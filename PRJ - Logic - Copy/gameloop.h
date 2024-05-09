@@ -100,6 +100,7 @@ public:
     void empty(std::list<Sprite*>& entities);
     void emptyZombie(std::list<Zombie*>& entities);
     void reset();
+    void quit();
 
     void play(Mix_Music *gMusic);
     void play(Mix_Chunk* gChunk);

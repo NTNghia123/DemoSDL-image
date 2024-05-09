@@ -268,11 +268,11 @@ void Game::play(){
             prepareScene(renderer);
             renderTexture(highscoreMenu,0,0,renderer);
             renderTexture(backButton.texture,0,0,renderer);
-            renderScore(scores[0],fontHighScore,colorRed,133, renderer);
-            renderScore(scores[1],fontHighScore,colorRed,202, renderer);
-            renderScore(scores[2],fontHighScore,colorRed,269, renderer);
-            renderScore(scores[3],fontHighScore,colorRed,336, renderer);
-            renderScore(scores[4],fontHighScore,colorRed,403, renderer);
+            renderScore(scores[0],fontHighScore,colorRed,134,renderer);
+            renderScore(scores[1],fontHighScore,colorRed,202,renderer);
+            renderScore(scores[2],fontHighScore,colorRed,270,renderer);
+            renderScore(scores[3],fontHighScore,colorRed,338,renderer);
+            renderScore(scores[4],fontHighScore,colorRed,406,renderer);
             getIfHighScores();
             presentScene(renderer);
         break;
@@ -404,6 +404,7 @@ void Game::play(){
                     SDL_GetMouseState(&mouseX,&mouseY);
                     if (isInRect(yesButton)){
                     play(clickSound);
+                    quit();
                     exit(0);
                     }else if (isInRect(noButton)){
                     play(clickSound);
@@ -849,4 +850,69 @@ void Game::play(){
     play(mainMusic);
     }
 	}
+
+	void Game::quit() {
+    Mix_FreeMusic(mainMusic);
+    Mix_FreeChunk(boomChunk);
+    Mix_FreeChunk(kingCombo);
+    Mix_FreeChunk(ultiSound);
+    Mix_FreeChunk(clickSound);
+    Mix_FreeChunk(explodeSound);
+
+    SDL_DestroyTexture(MenuTexture.texture);
+    SDL_DestroyTexture(startButton.texture);
+    SDL_DestroyTexture(highscoreButton.texture);
+    SDL_DestroyTexture(helpButton.texture);
+    SDL_DestroyTexture(quitButton.texture);
+    SDL_DestroyTexture(dieMenu);
+    SDL_DestroyTexture(quitMenu);
+    SDL_DestroyTexture(yesButton.texture);
+    SDL_DestroyTexture(noButton.texture);
+    SDL_DestroyTexture(backButton.texture);
+    SDL_DestroyTexture(highscoreMenu);
+    SDL_DestroyTexture(pauseMenuTexture.texture);
+    SDL_DestroyTexture(replayButton.texture);
+    SDL_DestroyTexture(toMenuButton.texture);
+    SDL_DestroyTexture(resumeButton.texture);
+    SDL_DestroyTexture(emptyManaBar);
+    SDL_DestroyTexture(maxManaBar);
+    SDL_DestroyTexture(arrowTexture);
+    SDL_DestroyTexture(fireTexture);
+    SDL_DestroyTexture(blueTexture);
+    SDL_DestroyTexture(purpleTexture);
+    SDL_DestroyTexture(ultiTexture);
+    SDL_DestroyTexture(boomTexture);
+    SDL_DestroyTexture(boom1Frame);
+    SDL_DestroyTexture(zombieDie);
+    SDL_DestroyTexture(zombieEnter);
+    SDL_DestroyTexture(zombieWalk);
+    SDL_DestroyTexture(zombieFreeze);
+    SDL_DestroyTexture(zombieFreezing);
+    SDL_DestroyTexture(zombieDefault);
+    SDL_DestroyTexture(zombieHealthBar);
+    SDL_DestroyTexture(bg.texture);
+    SDL_DestroyTexture(STATIC_BG_day);
+    SDL_DestroyTexture(STATIC_BG_night);
+    SDL_DestroyTexture(SCROLLING_BG_day);
+    SDL_DestroyTexture(SCROLLING_BG_night);
+    SDL_DestroyTexture(player.NormalTexture);
+    SDL_DestroyTexture(player.JumpingTexture);
+    SDL_DestroyTexture(player.ShootingTexture);
+    SDL_DestroyTexture(player.PlayerDefaultTexture);
+
+    TTF_CloseFont(fontHighScore);
+    TTF_CloseFont(fontScore);
+    TTF_CloseFont(fontText);
+    TTF_CloseFont(fontComboOkay);
+    TTF_CloseFont(fontComboGoody);
+    TTF_CloseFont(fontComboCrazy);
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+
+    Mix_Quit();
+    TTF_Quit();
+    IMG_Quit();
+    SDL_Quit();
+}
 

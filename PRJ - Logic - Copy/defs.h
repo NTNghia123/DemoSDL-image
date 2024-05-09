@@ -3,8 +3,6 @@
 
 #define BG_DAY "img\\sky_crop.jpg" // cho scroll
 #define BG_NIGHT "img\\night_sky.jpg"
-//#define STATIC_BG_DAY "img\\grass_field_resize_afterAse.jpg"
-//#define STATIC_BG_DAY "img\\bg_day.jpg"
 #define STATIC_BG_DAY "img\\new_bg (1).jpg"
 #define STATIC_BG_NIGHT "img\\red_night - rs.png"
 #define WINDOW_TITLE "Hello World!"

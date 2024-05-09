@@ -15,9 +15,5 @@ int main(int argc, char *argv[])
     game.play();
 
 
-//    SDL_DestroyTexture( birdTexture );
-//    birdTexture = NULL;
-
-    //quitLoop(renderer,window);
     return 0;
 }
