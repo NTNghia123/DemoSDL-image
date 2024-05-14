@@ -59,3 +59,20 @@
 	<vector>
 	"defs.h"
 
+1715566104 source:d:\demosdl image\learning sdl\bai 8 - chim\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<vector>
+	"defs.h"
+	"graphics.h"
+
+1715565918 d:\demosdl image\learning sdl\bai 8 - chim\defs.h
+
+1715565972 d:\demosdl image\learning sdl\bai 8 - chim\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	"defs.h"
+

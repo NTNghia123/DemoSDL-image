@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1710344135 source:d:\demosdl image\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1710343907 d:\demosdl image\defs.h
+
+1710344070 d:\demosdl image\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1710686628 source:d:\mouseevent\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+
+1710343907 d:\mouseevent\defs.h
+
+1710344070 d:\mouseevent\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+
+1712394159 source:d:\tictactoe\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+	"logic.h"
+
+1712394239 d:\tictactoe\defs.h
+
+1712394060 d:\tictactoe\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"logic.h"
+
+1712393426 d:\tictactoe\logic.h
+
+1712397396 source:d:\demosdl image\tictactoe\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+	"logic.h"
+
+1712394239 d:\demosdl image\tictactoe\defs.h
+
+1712394060 d:\demosdl image\tictactoe\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"logic.h"
+
+1712393426 d:\demosdl image\tictactoe\logic.h
+

@@ -7,6 +7,7 @@
 #include <vector>
 #include "defs.h"
 struct Sprite {
+    int x,y,w, h;
     SDL_Texture* texture;
     std::vector <SDL_Rect> clips;
     int currentFrame = 0;
@@ -30,6 +31,23 @@ struct Sprite {
         return &(clips[currentFrame]);
     }
 };
+class Wizard : public Sprite{
+    public :
+    SDL_Texture* NormalTexture;
+    SDL_Texture* AttackTexture;
+    SDL_Texture* DieTexture;
+    SDL_Texture* WizardDefaultTexture;
+    std::vector <SDL_Texture*> WizardTexture;
+    int currentTexture = 0;
+
+    void WizardInit();
+};
+void Wizard::WizardInit (){
+    WizardTexture.push_back(NormalTexture);
+    WizardTexture.push_back(AttackTexture);
+    WizardTexture.push_back(DieTexture);
+    SDL_QueryTexture(WizardDefaultTexture, NULL, NULL, &w, &h);
+}
 
 struct Graphics {
     SDL_Renderer *renderer;

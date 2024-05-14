@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1715527415 source:d:\demosdl image\tictactoe\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"graphics.h"
+	"logic.h"
+
+1715527845 d:\demosdl image\tictactoe\defs.h
+
+1715527415 d:\demosdl image\tictactoe\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"logic.h"
+
+1715527826 d:\demosdl image\tictactoe\logic.h
+

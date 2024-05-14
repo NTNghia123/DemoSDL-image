@@ -26,5 +26,15 @@ const int BIRD_CLIPS[][4] = {
 };
 const int BIRD_FRAMES = sizeof(BIRD_CLIPS)/sizeof(int)/4;
 
+const int WIZARD_CLIPS[][4] = {
+    {0,0,200,300},
+    {365,0,200,300},
+    {730,0,200,300},
+    {1095,0,200,300},
+    {1460,0,200,300},
+    {1825,0,200,300}
+};
+const int WIZARD_FRAMES = sizeof(WIZARD_CLIPS)/sizeof(int)/4;
+
 #endif
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="gameloop.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5674" topLine="87" />
+		</Cursor>
+		<Folding>
+			<Collapse line="140" />
+			<Collapse line="217" />
+			<Collapse line="266" />
+			<Collapse line="295" />
+			<Collapse line="315" />
+			<Collapse line="320" />
+			<Collapse line="326" />
+			<Collapse line="339" />
+			<Collapse line="399" />
+			<Collapse line="404" />
+			<Collapse line="437" />
+			<Collapse line="455" />
+			<Collapse line="461" />
+			<Collapse line="479" />
+			<Collapse line="491" />
+			<Collapse line="504" />
+			<Collapse line="528" />
+			<Collapse line="532" />
+			<Collapse line="542" />
+			<Collapse line="556" />
+			<Collapse line="568" />
+			<Collapse line="595" />
+			<Collapse line="630" />
+			<Collapse line="640" />
+			<Collapse line="674" />
+			<Collapse line="727" />
+			<Collapse line="747" />
+			<Collapse line="754" />
+			<Collapse line="761" />
+			<Collapse line="877" />
+			<Collapse line="956" />
+			<Collapse line="995" />
+			<Collapse line="1137" />
+		</Folding>
+	</File>
+	<File name="sprite_player.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1339" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="background.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="441" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="score.h" open="1" top="1" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="461" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="258" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="graphics.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7915" topLine="70" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="15" />
+			<Collapse line="22" />
+			<Collapse line="60" />
+			<Collapse line="70" />
+			<Collapse line="96" />
+			<Collapse line="101" />
+			<Collapse line="110" />
+			<Collapse line="127" />
+			<Collapse line="133" />
+			<Collapse line="142" />
+			<Collapse line="174" />
+			<Collapse line="231" />
+			<Collapse line="238" />
+		</Folding>
+	</File>
+	<File name="sprite_player.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1648" topLine="58" />
+		</Cursor>
+	</File>
+	<File name="score.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="511" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="defs.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2840" topLine="100" />
+		</Cursor>
+	</File>
+	<File name="gameloop.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2476" topLine="69" />
+		</Cursor>
+	</File>
+	<File name="graphics.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1416" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="player.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1550" topLine="38" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

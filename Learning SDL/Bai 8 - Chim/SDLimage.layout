@@ -2,25 +2,24 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="graphics.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="defs.h" open="1" top="0" tabpos="39" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4273" topLine="84" />
+			<Cursor1 position="891" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="graphics.h" open="1" top="0" tabpos="40" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="157" topLine="112" />
 		</Cursor>
 		<Folding>
-			<Collapse line="8" />
-			<Collapse line="38" />
-			<Collapse line="82" />
-			<Collapse line="92" />
+			<Collapse line="56" />
+			<Collapse line="100" />
+			<Collapse line="110" />
 		</Folding>
 	</File>
-	<File name="defs.h" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="38" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="157" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1155" topLine="29" />
+			<Cursor1 position="1317" topLine="32" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

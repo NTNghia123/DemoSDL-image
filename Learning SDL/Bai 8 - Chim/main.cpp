@@ -17,12 +17,20 @@ int main(int argc, char *argv[])
     SDL_Color color = {255, 255, 0, 0};
     SDL_Texture* helloText = graphics.renderText("Hello", font, color);
 
-
-
-
     Sprite bird;
     SDL_Texture* birdTexture = graphics.loadTexture(BIRD_SPRITE_FILE);
     bird.init(birdTexture, BIRD_FRAMES, BIRD_CLIPS);
+
+    Wizard wizard;
+    wizard.NormalTexture = graphics.loadTexture("img\\wIdle.png");
+    wizard.AttackTexture = graphics.loadTexture("img\\wAttack.png");
+    wizard.DieTexture = graphics.loadTexture("img\\wDeath.png");
+    wizard.WizardDefaultTexture = graphics.loadTexture("img\\wDeath.png");
+    wizard.init(wizard.NormalTexture,WIZARD_FRAMES,WIZARD_CLIPS);
+    wizard.x = 0;
+    wizard.y = 200;
+    wizard.WizardInit ();
+
 
 
     bool quit = false;
@@ -33,9 +41,10 @@ int main(int argc, char *argv[])
         }
         bird.tick();
         graphics.prepareScene();
-        graphics.render(100,100,bird);
-
+        //graphics.render(100,100,bird);
+        //graphics.render(100,100,wizard);
         graphics.renderTexture(helloText, 200, 200);
+        graphics.renderTexture(wizard.NormalTexture,0,0);
 
         graphics.presentScene();
         SDL_Delay(100);

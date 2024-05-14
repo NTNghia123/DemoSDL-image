@@ -1,0 +1,58 @@
+
+#include "sprite_player.h"
+#include "defs.h"
+
+void Sprite::initClip(SDL_Texture* _texture, int frames, const int _clips[][4]) {
+
+	texture = _texture;
+	SDL_Rect clip;
+
+	for (int i = 0; i < frames; i++) {
+
+		clip.x = _clips[i][0];
+		clip.y = _clips[i][1];
+		clip.w = _clips[i][2];
+		clip.h = _clips[i][3];
+		clips.push_back(clip);
+	}
+}
+    void Sprite::tick() {
+        currentFrame = (currentFrame + 1) % clips.size();
+    }
+
+   const SDL_Rect* Sprite::getCurrentClip() const {
+        return &(clips[currentFrame]);
+    }
+void Sprite::updateToado(int keyboard[])
+    {
+        dx = dy = 0;
+        if (keyboard[SDL_SCANCODE_UP]) turnUp();
+        if (keyboard[SDL_SCANCODE_DOWN]) turnDown();
+    }
+
+    void Sprite::movee(){
+        x += dx;
+        y += dy;
+    }
+    void Sprite::turnUp(){
+        if ( y - speed >= 170 && y - speed <= 470){
+        dx = 0;
+        dy = - speed ;
+        }
+    }
+    void Sprite::turnDown(){
+        if ( y + speed >= 170 && y + speed <= 400){
+        dx = 0;
+        dy = speed ;
+        }
+    }
+    void Sprite::render(int x, int y, SDL_Renderer *renderer) {
+        const SDL_Rect* clip = getCurrentClip();
+        SDL_Rect renderQuad = {x, y, clip->w, clip->h};
+        SDL_RenderCopy(renderer, texture, clip, &renderQuad);
+    }
+    void Sprite::getPos(int _x, int _y){
+        x = _x;
+        y = _y;
+    }
+
