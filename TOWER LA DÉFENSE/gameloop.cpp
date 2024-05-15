@@ -1494,7 +1494,6 @@ void Game::play(){
     if ( wizard.x == 60) wizard.x -= 60;
     }
     if (prevClass == MULTIPLAYER){
-    std::cerr << "MULTIPLAYER" << std::endl;
     archer.health = 5;
     wizard.health = archer.health;
     wizard.currentTexture = 0;

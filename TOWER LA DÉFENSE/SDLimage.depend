@@ -1028,3 +1028,8 @@
 	"sprite_player.h"
 	"defs.h"
 
+1715706391 source:d:\demosdl image\tower la d…fense\gameloop.cpp
+	"gameloop.h"
+	"graphics.h"
+	"score.h"
+
